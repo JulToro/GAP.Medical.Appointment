@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
   </ItemGroup>
 
@@ -14,5 +13,6 @@
     <ProjectReference Include="..\GAP.Medical.Appointment.Domain\GAP.Medical.Appointment.Domain.csproj" />
     <ProjectReference Include="..\GAP.Medical.Appointment.Infrastructure\GAP.Medical.Appointment.Infrastructure.csproj" />
   </ItemGroup>
+
 
 </Project>
