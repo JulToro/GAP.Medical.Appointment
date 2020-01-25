@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace GAP.Medical.Appointment.Api.UseCases.AssignAppointments
+﻿namespace GAP.Medical.Appointment.Api.UseCases.AssignAppointments
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using GAP.Medical.Appointment.Api.Models;
+    using Microsoft.AspNetCore.Cors;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
+    /// <summary>
+    /// Class Profile 
+    /// </summary>
+    [Produces("application/json")]
+    [Route("api/[controller]")]
+    [EnableCors("MyPolicy")]
     public class AppointmentController : Controller
     {
         /// <summary>

@@ -14,6 +14,17 @@ namespace GAP.Medical.Appointment.Domain.Patients
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
 
+        public IReadOnlyCollection<Guid> AppointmentIds
+        {
+            get
+            {
+                IReadOnlyCollection<Guid> readOnly = _appoinments.GetAppoinmentIds();
+                return readOnly;
+            }
+        }
+                
+        private AppointmentsCollection _appoinments = new AppointmentsCollection();
+        public Patient() { }
         public Patient(string documentId, string name, string lastName, string phoneNumber, string email) 
         {
             Id = Guid.NewGuid();
@@ -22,6 +33,18 @@ namespace GAP.Medical.Appointment.Domain.Patients
             LastName = lastName;
             PhoneNumber = phoneNumber;
             Email = email;
+        }
+
+        public void RegisterAppoinment(Guid appointmentId)
+        {
+            _appoinments.Add(appointmentId);
+        }
+
+        public void LoadAppoinments(ICollection<Guid> appoinmentIds)
+        {
+            _appoinments = new AppointmentsCollection();
+            foreach (var account in appoinmentIds)
+                _appoinments.Add(account);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GAP.Medical.Appointment.Api.UseCases.RegisterProfile
+namespace GAP.Medical.Appointment.Api.UseCases.RegisterPatient
 {
     public class RegisterPatientRequest
     {

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GAP.Medical.Appointment.Application.Boundaries.RegisterPatient
+﻿namespace GAP.Medical.Appointment.Application.Boundaries.RegisterPatient
 {
+    using GAP.Medical.Appointment.Domain.Patients;
     public class Output
     {
-        public Patient Patient { get; set; }
-        public Output(Patient patient)
+        public Patient _patient { get; set; }
+        public Output(IPatient patient)
         {
-            Patient = patient;
+            _patient = new Patient(patient);
         }
     }
 }

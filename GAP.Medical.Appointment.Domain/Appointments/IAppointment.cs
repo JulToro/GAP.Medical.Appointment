@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GAP.Medical.Appointment.Domain.Appontments
 {
-    public interface IAppointment
+    public interface IAppointment: IAggregateRoot
     {
         
     }
