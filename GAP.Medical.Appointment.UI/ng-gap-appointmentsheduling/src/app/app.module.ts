@@ -12,6 +12,10 @@ import { MenuComponent } from './components/menu/menu.component';
 import { PatientComponent } from './components/patient/patient.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { AppointmentService } from './appointment.service';
+import { PatientService } from './services/patient.service';
+import { PatientApointmentService } from './services/patient-apointment.service';
+import { MedicalSpecialityService } from './services/medical-speciality.service';
 
 
 @NgModule({
@@ -23,7 +27,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     MenuComponent,
     PatientComponent,
     SignupComponent,
-    ScheduleComponent
+    ScheduleComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AppointmentService,PatientService,PatientApointmentService,MedicalSpecialityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

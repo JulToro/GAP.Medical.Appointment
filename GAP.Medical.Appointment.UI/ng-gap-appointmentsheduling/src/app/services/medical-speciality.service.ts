@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Observable } from "rxjs";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MedicalSpecialityModel } from '../components/Models/medicalSpecialityModel';
-
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AppointmentService {
+export class MedicalSpecialityService {
 
   constructor(private http: HttpClient) { }
 
-  getAppointments(idUser){
+
+  getMedicalSpecialities(): Observable<MedicalSpecialityModel>
+  {
     const headers = new HttpHeaders().set("X-CustomHeader", "custom header value")
                                       .set("X-CustomHeader", "custom header value");;
 
     
-     return this.http.get<any>("https://localhost:44317/api/Appointment"+idUser, {headers})
-                   .subscribe((result:any)=>{
-                      
-
-                   });
+     return this.http.get<any>("https://localhost:44317/api/MedicalSpeciality", {headers});
   }
-
 }

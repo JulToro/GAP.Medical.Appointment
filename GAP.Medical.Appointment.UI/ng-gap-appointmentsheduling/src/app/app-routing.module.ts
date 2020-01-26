@@ -17,8 +17,7 @@ const routes: Routes = [
     path: 'main', component: MainComponent,
     children: [
       { path: '', redirectTo: 'schedule', pathMatch: 'full' },
-      { path: 'schedule', component: ScheduleComponent },                                    
-
+      { path: 'schedule', component: ScheduleComponent },   
       { path: 'patient', component: PatientComponent },
       { path: 'appointment', component: AppointmentComponent },
     ]

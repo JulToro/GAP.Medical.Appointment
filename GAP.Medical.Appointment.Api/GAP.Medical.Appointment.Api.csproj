@@ -24,10 +24,6 @@
     <ProjectReference Include="..\GAP.Medical.Appointment.Domain\GAP.Medical.Appointment.Domain.csproj" />
     <ProjectReference Include="..\GAP.Medical.Appointment.Infrastructure\GAP.Medical.Appointment.Infrastructure.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="UseCases\Loggin\" />
-  </ItemGroup>
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>

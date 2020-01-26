@@ -63,7 +63,7 @@ namespace GAP.Medical.Appointment.Api
 
         private void AddSQLPersistence(IServiceCollection services)
         {
-            services.AddDbContext<AppointmentContext>(options => options.UseSqlServer("Server = DESKTOPJTORO\\TOROSQLSERVER; Database=BDPruebaNet;User Id=sa;Password=asdf.1234", b => b.MigrationsAssembly("GAP.Medical.Appointment.Infrastructure")));
+            services.AddDbContext<AppointmentContext>(options => options.UseSqlServer(Configuration["connectionString"], b => b.MigrationsAssembly("GAP.Medical.Appointment.Infrastructure")));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAppointmentReporsitory, AppointmentReporsitory>();
             services.AddScoped<IPatientRepository, PatientRepository>();
