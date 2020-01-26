@@ -18,5 +18,7 @@ namespace GAP.Medical.Appointment.Domain.Appontments
             MedicalSpecialtyId = medicalSpecialtyId;
             AssignedDate = assignedDate;
         }
+
+
     }
 }

@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,6 +30,8 @@ namespace GAP.Medical.Appointment.Api
         {
             services.AddControllers();
             AddSwagger(services);
+            services.AddDbContext<AppointmentContext>(options => options.UseSqlServer("Server = DESKTOPJTORO\\TOROSQLSERVER; Database=BDPruebaNet;User Id=sa;Password=asdf.1234", b => b.MigrationsAssembly("GAP.Medical.Appointment.Infrastructure")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
