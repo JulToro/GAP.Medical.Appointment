@@ -1,0 +1,12 @@
+main{
+    display: flex;
+    width: 100%
+}
+
+app-menu{
+    flex: 1 1 1;
+}
+
+::ng-deep app-shedule{
+    flex: 3 1 0
+}

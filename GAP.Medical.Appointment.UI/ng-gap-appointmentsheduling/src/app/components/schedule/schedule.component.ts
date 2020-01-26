@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { debug } from 'util';
 import { MedicalSpecialityService } from 'src/app/services/medical-speciality.service';
+import { MedicalSpecialityModel } from '../Models/medicalSpecialityModel';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
@@ -11,19 +12,17 @@ import { MedicalSpecialityService } from 'src/app/services/medical-speciality.se
 export class ScheduleComponent implements OnInit {
   scheduleForm: FormGroup;
 
-  specialities = [
-    { name: "General", id: 0 },
-    { name: "Odontology", id: 1 },
-    { name: "Brain", id: 2 }
-  ];
   dateNow = Date.now.toString();
 
+
+  public errorMessage: string;
+  
 
   constructor(private formBuilder: FormBuilder, private medicalSpecialityService: MedicalSpecialityService) { }
 
   ngOnInit() {
     this.scheduleForm = this.formBuilder.group({
-      specialities: ['', [Validators.required]],
+      medicalSpecialitys: ['', [Validators.required]],
       date: ['', [Validators.required]],
       time: ['', [Validators.required]]
     });
@@ -31,12 +30,17 @@ export class ScheduleComponent implements OnInit {
   }
   onSubmit() {}
 
+
+  public medicalSpecialitys: MedicalSpecialityModel[];
   getMedicineSpecialites()
   {    
-    var specialites  = this.medicalSpecialityService.getMedicalSpecialities().subscribe((res:any)=>
-    { 
-      console.log(res)
-    });   
+    this.medicalSpecialityService.getMedicalSpecialities().subscribe((res: any)=>
+    {      
+      var test = res.value;
+      this.medicalSpecialitys = test;
+
+      console.log(test)
+    }, error => this.errorMessage = <any>error);  
   }
 
   loadData(e){

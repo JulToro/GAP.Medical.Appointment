@@ -36,6 +36,17 @@ namespace GAP.Medical.Appointment.Api
             AddSwagger(services);
             AddAppoinmentCore(services);
             AddSQLPersistence(services);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy", builder =>
+                {
+                    builder
+                        .AllowAnyHeader()
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        ;
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,12 +56,14 @@ namespace GAP.Medical.Appointment.Api
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+            app.UseRouting();
+
+            app.UseCors(options => options.AllowAnyOrigin());
             app.UseCors("MyPolicy");
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            
 
 
             app.UseEndpoints(endpoints =>

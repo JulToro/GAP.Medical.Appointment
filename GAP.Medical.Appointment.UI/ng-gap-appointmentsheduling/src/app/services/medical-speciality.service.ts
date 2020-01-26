@@ -11,12 +11,11 @@ export class MedicalSpecialityService {
   constructor(private http: HttpClient) { }
 
 
-  getMedicalSpecialities(): Observable<MedicalSpecialityModel>
+  getMedicalSpecialities(): Observable<MedicalSpecialityModel[]>
   {
     const headers = new HttpHeaders().set("X-CustomHeader", "custom header value")
-                                      .set("X-CustomHeader", "custom header value");;
+                                      .set("X-CustomHeader", "custom header value");
 
-    
-     return this.http.get<any>("https://localhost:44317/api/MedicalSpeciality", {headers});
+     return this.http.get<MedicalSpecialityModel[]>("https://localhost:44317/api/MedicalSpeciality", {headers});
   }
 }
