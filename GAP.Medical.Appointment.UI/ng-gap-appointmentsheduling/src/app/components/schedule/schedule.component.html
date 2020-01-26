@@ -1,0 +1,22 @@
+<main>
+    <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()">
+      <fieldset>
+        <label for="specialities">Specialities:</label>
+        <select id="specialities" formControlName="specialities" (change)="loadData($event.target.value)">
+          <option *ngFor="let speciality of specialities" [value]="speciality.id">{{speciality.name}}</option>
+        </select>
+      </fieldset>
+      <fieldset>
+        <label for="date">Select appointment date:</label>
+        <input type="datetime-local" formControlName="date" id="date">
+      </fieldset>
+      <fieldset>
+        <label for="time">Time:</label>
+        <input type="time" formControlName="time" id="time">
+      </fieldset>
+      {{scheduleForm.controls.specialities.value | json}}
+      <button [disabled]="!scheduleForm.valid" type="submit">
+        Schedule
+      </button>
+    </form>
+  </main>

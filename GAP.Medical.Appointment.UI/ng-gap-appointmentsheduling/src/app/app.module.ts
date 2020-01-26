@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,8 +10,9 @@ import { AppointmentComponent } from './components/appointment/appointment.compo
 import { MainComponent } from './components/main/main.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { PatientComponent } from './components/patient/patient.component';
-import { SheduleComponent } from './components/shedule/shedule.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+
 
 @NgModule({
   declarations: [
@@ -19,12 +22,14 @@ import { SignupComponent } from './components/signup/signup.component';
     MainComponent,
     MenuComponent,
     PatientComponent,
-    SheduleComponent,
-    SignupComponent
+    SignupComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
