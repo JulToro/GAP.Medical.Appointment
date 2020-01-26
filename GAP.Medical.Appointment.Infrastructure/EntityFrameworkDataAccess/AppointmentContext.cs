@@ -12,9 +12,7 @@ namespace GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess
     public class AppointmentContext : DbContext
     {
         public AppointmentContext(DbContextOptions options) : base(options)
-        {
-
-        }
+        {}
         public DbSet<Apointmenst.Appointment> Appointment { get; set; }
         public DbSet<MedicalSpeciality> MedicalSpecialities { get; set; }
         public DbSet<Patient> Patients { get; set; }
@@ -25,6 +23,11 @@ namespace GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess
             modelBuilder.Entity<MedicalSpeciality>();
             modelBuilder.Entity<MedicalSpeciality>().Property(t => t.Name).IsRequired();
             modelBuilder.Entity<MedicalSpeciality>().HasMany(t => t.Apointments).WithOne(b => b.MedicalSpeciality);
+            modelBuilder.Entity<MedicalSpeciality>().HasData(new MedicalSpeciality("General medicine"));
+            modelBuilder.Entity<MedicalSpeciality>().HasData(new MedicalSpeciality("Odontology"));
+            modelBuilder.Entity<MedicalSpeciality>().HasData(new MedicalSpeciality("Pediatrics"));
+            modelBuilder.Entity<MedicalSpeciality>().HasData(new MedicalSpeciality("Neurology"));
+
 
             modelBuilder.Entity<Patient>().HasKey(t => t.Id);
             modelBuilder.Entity<Patient>().Property(t => t.DocumentId).IsRequired();
@@ -34,10 +37,7 @@ namespace GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess
             modelBuilder.Entity<Patient>().Property(t => t.Email).IsRequired();
             modelBuilder.Entity<Patient>().HasMany(t => t.Apointments).WithOne(b => b.Patient) ;
 
-            modelBuilder.Entity<Apointmenst.Appointment>();
-                         
-            
-
+            modelBuilder.Entity<Apointmenst.Appointment>();                   
         }
     }
 }
