@@ -8,6 +8,7 @@
 
     public interface IMedicalSpecialitiesRepository
     {
+        Task<IEnumerable<IMedicalSpeciality>> Get();
         Task<IMedicalSpeciality> Get(Guid id);
     }
 }

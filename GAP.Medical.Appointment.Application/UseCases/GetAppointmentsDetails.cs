@@ -10,26 +10,20 @@
     using System.Threading.Tasks;
     public class GetAppointmentsDetails : IUseCase
     {
-        private readonly IEntitiesFactory _entityFactory;
         private readonly IOutputHandler _outputHandler;
         private readonly IPatientRepository _patientRepository;
         private readonly IAppointmentReporsitory _iAppointmentReporsitory;
         private readonly IMedicalSpecialitiesRepository _iMedicalSpecialitiesRepository;
-        private readonly IUnitOfWork _unityOfWork;
         public GetAppointmentsDetails(IPatientRepository iPatientRepository,
                                IAppointmentReporsitory iAppointmentReporsitory,
                                IMedicalSpecialitiesRepository iMedicalSpecialitiesRepository,
-                               IEntitiesFactory entityFactory,
-                               IOutputHandler outputHandler,
-                               IUnitOfWork unityOfWork
+                               IOutputHandler outputHandler
                                )
         {
             _patientRepository = iPatientRepository;
             _iAppointmentReporsitory = iAppointmentReporsitory;
             _iMedicalSpecialitiesRepository = iMedicalSpecialitiesRepository;
             _outputHandler = outputHandler;
-            _entityFactory = entityFactory;
-            _unityOfWork = unityOfWork;
         }
         public async Task Execute(Input input)
         {

@@ -13,25 +13,17 @@ namespace GAP.Medical.Appointment.Application.UseCases
 {
     public class CancelAppointment: IUseCase
     {
-        private readonly IEntitiesFactory _entityFactory;
         private readonly IOutputHandler _outputHandler;
-        private readonly IPatientRepository _patientRepository;
         private readonly IAppointmentReporsitory _iAppointmentReporsitory;
-        private readonly IMedicalSpecialitiesRepository _iMedicalSpecialitiesRepository;
         private readonly IUnitOfWork _unityOfWork;
-        public CancelAppointment(IPatientRepository iPatientRepository,
+        public CancelAppointment(
                                IAppointmentReporsitory iAppointmentReporsitory,
-                               IMedicalSpecialitiesRepository iMedicalSpecialitiesRepository,
-                               IEntitiesFactory entityFactory,
                                IOutputHandler outputHandler,
                                IUnitOfWork unityOfWork
                                )
         {
-            _patientRepository = iPatientRepository;
             _iAppointmentReporsitory = iAppointmentReporsitory;
-            _iMedicalSpecialitiesRepository = iMedicalSpecialitiesRepository;
             _outputHandler = outputHandler;
-            _entityFactory = entityFactory;
             _unityOfWork = unityOfWork;
         }
 

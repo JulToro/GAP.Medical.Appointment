@@ -31,12 +31,10 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetAppointmentsDetails
                 appointmens.Add(new AppointmentModel(item.Id, item.PatientId, item.MedicalSpecialityId, item.AssignedDate, medialModel));
             }
 
-            PatientModel patientModel = new PatientModel(output.Patient.Id, output.Patient.DocumentId,output.Patient.Name,output.Patient.LastName,output.Patient.PhoneNumber,output.Patient.Email);
+            PatientModel patientModel = new PatientModel(output.Patient.Id, output.Patient.DocumentId, output.Patient.Name, output.Patient.LastName, output.Patient.PhoneNumber, output.Patient.Email);
 
-            PatientApointmentModel newProfile = new PatientApointmentModel(
-                                patientModel,
-                                appointmens
-                    );
+            PatientApointmentModel newProfile = new PatientApointmentModel(patientModel,
+                                                                            appointmens  );
 
             ViewModel = new CreatedAtRouteResult("GetAppointment",
                 new

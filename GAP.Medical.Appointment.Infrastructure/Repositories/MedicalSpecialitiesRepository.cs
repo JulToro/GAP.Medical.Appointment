@@ -5,6 +5,7 @@
     using GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess;
     using Microsoft.EntityFrameworkCore;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -20,6 +21,12 @@
         {
             var medicalSpecialities = await _context.MedicalSpecialities.Where(x => x.Id == id).Select(y => y).SingleOrDefaultAsync();
 
+            return medicalSpecialities;
+        }
+
+        public async Task<IEnumerable<IMedicalSpeciality>> Get()
+        {
+            var medicalSpecialities = await _context.MedicalSpecialities.Select(x=>x).ToListAsync();
             return medicalSpecialities;
         }
     }
