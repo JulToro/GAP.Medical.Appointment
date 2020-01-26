@@ -7,10 +7,11 @@ namespace GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails
 {
     public class Input
     {
-        public Patient Patient { get; set; }
-        public Input(Patient patient)
+        public Guid PatientId { get; }
+
+        public Input(Guid patientId)
         {
-            Patient = patient;
+            PatientId = patientId;
         }
 
     }

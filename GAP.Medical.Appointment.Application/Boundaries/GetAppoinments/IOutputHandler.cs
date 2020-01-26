@@ -4,12 +4,9 @@ using System.Text;
 
 namespace GAP.Medical.Appointment.Application.Boundaries.GetAppoinments
 {
-    public class Input
+    public interface IOutputHandler : IErrorHandler
     {
-        public Guid PatientId { get; }
-        public Input(Guid patientId)
-        {
-            PatientId = patientId;
-        }
+        void Handle(Output output);
     }
+
 }

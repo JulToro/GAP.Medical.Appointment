@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using GAP.Medical.Appointment.Api.Models;
     using GAP.Medical.Appointment.Api.UseCases.RegisterPatient;
+    using GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails;
     using Microsoft.AspNetCore.Cors;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -16,34 +17,18 @@
     /// </summary>
     [Produces("application/json")]
     [Route("api/[controller]")]
-    [EnableCors("MyPolicy")]
+    //[EnableCors("MyPolicy")]
     public class PatientController : Controller
     {
-        //private readonly IUseCase _registerPatient;
-        //private readonly Presenter _presenter;
-        //public ProfileController(
-        //    IUseCase registerPatient,
-        //    Presenter presenter
-        //    )
-        //{
-        //    _registerPatient = registerPatient;
-        //    _presenter = presenter;
-        //}
-        /// <summary>
-        /// Get Profile 3
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet()]
-        [ProducesResponseType(typeof(ICollection<bool>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(400)]
-        public async Task<ActionResult> Get()
+        private readonly IUseCase _Patient;
+        private readonly Presenter _presenter;
+        public PatientController(
+            IUseCase registerPatient,
+            Presenter presenter
+            )
         {
-            ICollection<ProfileModel> result = null;
-            ProfileModel profile = new ProfileModel(Guid.NewGuid(), "", "", "", "", "");
-            result.Add(profile);
-
-            return Ok(true);
+            _Patient = registerPatient;
+            _presenter = presenter;
         }
 
         /// <summary>
@@ -57,9 +42,8 @@
         [ProducesResponseType(400)]
         public async Task<ActionResult> Get(Guid PatientId)
         {
-            ProfileModel result = new ProfileModel(Guid.NewGuid(), "", "", "", "", "");
-
-            return Ok(result);
+            await _Patient.Execute(new Input(PatientId));
+            return Ok(_presenter.ViewModel);
         }
     }
 }

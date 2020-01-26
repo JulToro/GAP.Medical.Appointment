@@ -1,11 +1,39 @@
-﻿using System;
+﻿using GAP.Medical.Appointment.Api.Models;
+using GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GAP.Medical.Appointment.Api.UseCases.GetPatientDetails
 {
-    public class Presenter
+    public class Presenter : IOutputHandler
     {
+        public IActionResult ViewModel { get; private set; }
+
+        public void Error(string message)
+        {
+            ViewModel = new NoContentResult();
+        }
+
+        public void Handle(Output output)
+        {
+            ProfileModel newProfile = new ProfileModel(
+                output.Id,
+                output.DocumentId,
+                output.LastName,
+                output.Email,
+                output.Name,
+                output.PhoneNumber
+            );
+
+            ViewModel = new CreatedAtRouteResult("GetPatient",
+                new
+                {
+                    patientId = newProfile.Id
+                },
+                newProfile);
+        }
     }
 }
