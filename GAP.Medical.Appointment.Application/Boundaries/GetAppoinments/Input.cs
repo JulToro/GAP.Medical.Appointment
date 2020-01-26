@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GAP.Medical.Appointment.Application.UseCases.GetAppoinments
+namespace GAP.Medical.Appointment.Application.Boundaries.GetAppoinments
 {
     public class Input
     {

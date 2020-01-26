@@ -8,7 +8,7 @@ namespace GAP.Medical.Appointment.Domain.MedicaSpecialties
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Appointment.Domain.Appontments.Appointment> Apointments { get; set; }
+        public virtual ICollection<Appointment.Domain.Appointments.Appointment> Apointments { get; set; }
 
         public MedicalSpeciality(string name)
         {

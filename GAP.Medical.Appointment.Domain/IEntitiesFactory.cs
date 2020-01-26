@@ -1,4 +1,4 @@
-﻿using GAP.Medical.Appointment.Domain.Appontments;
+﻿using GAP.Medical.Appointment.Domain.Appointments;
 using GAP.Medical.Appointment.Domain.Patients;
 using System;
 using System.Collections.Generic;

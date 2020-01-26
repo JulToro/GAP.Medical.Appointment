@@ -1,4 +1,4 @@
-﻿namespace GAP.Medical.Appointment.Application.UseCases.GetPatientDetails
+﻿namespace GAP.Medical.Appointment.Application.UseCases
 {
     using GAP.Medical.Appointment.Application.Boundaries.RegisterPatient;
     using GAP.Medical.Appointment.Application.Repositories;

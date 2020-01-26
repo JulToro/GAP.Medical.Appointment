@@ -1,15 +1,10 @@
 ﻿namespace GAP.Medical.Appointment.Api.UseCases.RegisterPatient
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
-    using GAP.Medical.Appointment.Application.RegisterPatient.UseCases;
-    using GAP.Medical.Appointment.Domain.Patients;
-    using Microsoft.AspNetCore.Cors;
+    using GAP.Medical.Appointment.Application.Boundaries.RegisterPatient;
+    using DomainPatient = GAP.Medical.Appointment.Domain.Patients;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-
 
     /// <summary>
     /// Class Profile 
@@ -43,7 +38,7 @@
         [ProducesResponseType(400)]
         public async Task<ActionResult> Post([FromBody]RegisterPatientRequest patient)
         {
-            await _registerPatient.Execute(new Input(new Patient(patient.DocumentId, patient.Name, patient.LastName, patient.PhoneNumber, patient.Email)));
+            await _registerPatient.Execute(new Input(new DomainPatient.Patient(patient.DocumentId, patient.Name, patient.LastName, patient.PhoneNumber, patient.Email)));
             return Ok(_presenter.ViewModel);
         }
     }

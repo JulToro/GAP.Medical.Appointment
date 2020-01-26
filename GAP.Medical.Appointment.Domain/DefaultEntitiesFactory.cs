@@ -1,4 +1,4 @@
-﻿using GAP.Medical.Appointment.Domain.Appontments;
+﻿using GAP.Medical.Appointment.Domain.Appointments;
 using GAP.Medical.Appointment.Domain.Patients;
 using System;
 
@@ -8,7 +8,7 @@ namespace GAP.Medical.Appointment.Domain
     {
         public IAppointment NewAppointment(Guid patientId, Guid medicalSpecialityId, DateTime assignedDate)
         {
-            var appoinment = new Appontments.Appointment(patientId, medicalSpecialityId, assignedDate);
+            var appoinment = new Appointments.Appointment(patientId, medicalSpecialityId, assignedDate);
             return appoinment;
         }
 

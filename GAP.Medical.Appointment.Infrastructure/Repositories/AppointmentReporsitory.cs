@@ -1,5 +1,5 @@
 ﻿using GAP.Medical.Appointment.Application.Repositories;
-using GAP.Medical.Appointment.Domain.Appontments;
+using GAP.Medical.Appointment.Domain.Appointments;
 using GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Apoitments =  GAP.Medical.Appointment.Domain.Appontments;
+using Apoitments =  GAP.Medical.Appointment.Domain.Appointments;
 
 namespace GAP.Medical.Appointment.Infrastructure.Repositories
 {

@@ -9,7 +9,7 @@
 
         public void Error(string message)
         {
-            throw new System.NotImplementedException();
+            ViewModel = new NoContentResult();
         }
 
         public void Handle(Output output)

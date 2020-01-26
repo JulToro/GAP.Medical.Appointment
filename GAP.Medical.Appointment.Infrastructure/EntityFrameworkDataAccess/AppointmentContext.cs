@@ -1,11 +1,11 @@
-﻿using GAP.Medical.Appointment.Domain.Appontments;
+﻿using GAP.Medical.Appointment.Domain.Appointments;
 using GAP.Medical.Appointment.Domain.MedicaSpecialties;
 using GAP.Medical.Appointment.Domain.Patients;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Apointmenst = GAP.Medical.Appointment.Domain.Appontments;
+using Apointmenst = GAP.Medical.Appointment.Domain.Appointments;
 
 namespace GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess
 {

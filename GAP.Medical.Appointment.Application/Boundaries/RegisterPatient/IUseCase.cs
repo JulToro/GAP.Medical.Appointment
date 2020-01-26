@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace GAP.Medical.Appointment.Application.RegisterPatient.UseCases
+namespace GAP.Medical.Appointment.Application.Boundaries.RegisterPatient
 {
     public interface IUseCase
     {

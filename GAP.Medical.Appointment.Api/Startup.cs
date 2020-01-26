@@ -67,16 +67,21 @@ namespace GAP.Medical.Appointment.Api
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAppointmentReporsitory, AppointmentReporsitory>();
             services.AddScoped<IPatientRepository, PatientRepository>();
+            services.AddScoped<IMedicalSpecialitiesRepository, MedicalSpecialitiesRepository>();
         }
         private void AddAppoinmentCore(IServiceCollection services)
         {
             services.AddScoped<IEntitiesFactory, DefaultEntitiesFactory>();
 
             services.AddScoped<GAP.Medical.Appointment.Api.UseCases.RegisterPatient.Presenter, GAP.Medical.Appointment.Api.UseCases.RegisterPatient.Presenter>();
+            services.AddScoped<GAP.Medical.Appointment.Api.UseCases.AssignAppointments.Presenter, GAP.Medical.Appointment.Api.UseCases.AssignAppointments.Presenter>();
 
             services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.RegisterPatient.IOutputHandler>(x => x.GetRequiredService<GAP.Medical.Appointment.Api.UseCases.RegisterPatient.Presenter>());
+            services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.AsignAppoinments.IOutputHandler>(x => x.GetRequiredService<GAP.Medical.Appointment.Api.UseCases.AssignAppointments.Presenter>());
 
-            services.AddScoped<GAP.Medical.Appointment.Application.RegisterPatient.UseCases.IUseCase, GAP.Medical.Appointment.Application.UseCases.RegisterPatient.RegisterPatient>();
+            services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.RegisterPatient.IUseCase, GAP.Medical.Appointment.Application.UseCases.RegisterPatient>();
+            services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.AsignAppoinments.IUseCase, GAP.Medical.Appointment.Application.UseCases.AsignAppointment>();
+
         }
 
 

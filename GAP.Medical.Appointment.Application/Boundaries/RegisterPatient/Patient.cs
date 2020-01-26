@@ -5,14 +5,14 @@ using System.Text;
 
 namespace GAP.Medical.Appointment.Application.Boundaries.RegisterPatient
 {
-    public sealed class Patient
+    public class Patient
     {
-        public Guid Id { get;  }
+        public Guid Id { get; }
         public string DocumentId { get; }
-        public string Name { get;  }
-        public string LastName { get;  }
-        public string PhoneNumber { get;  }
-        public string Email { get;  }
+        public string Name { get; }
+        public string LastName { get; }
+        public string PhoneNumber { get; }
+        public string Email { get; }
 
         public Patient(IPatient patient)
         {

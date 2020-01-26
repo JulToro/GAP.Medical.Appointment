@@ -1,4 +1,4 @@
-﻿using GAP.Medical.Appointment.Domain.Appontments;
+﻿using GAP.Medical.Appointment.Domain.Appointments;
 using GAP.Medical.Appointment.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace GAP.Medical.Appointment.Domain.Patients
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
 
-        public virtual ICollection<Appointment.Domain.Appontments.Appointment> Apointments { get; set; }
+        public virtual ICollection<Appointment.Domain.Appointments.Appointment> Apointments { get; set; }
         public IReadOnlyCollection<Guid> AppointmentIds
         {
             get

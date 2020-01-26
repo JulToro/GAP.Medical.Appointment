@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace GAP.Medical.Appointment.Application.UseCases.GetPatientDetails
+namespace GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails
 {
     public class Input
     {

@@ -1,14 +1,10 @@
 ﻿using GAP.Medical.Appointment.Application.Boundaries.RegisterPatient;
-using GAP.Medical.Appointment.Application.RegisterPatient.UseCases;
 using GAP.Medical.Appointment.Application.Repositories;
 using GAP.Medical.Appointment.Application.Services;
 using GAP.Medical.Appointment.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace GAP.Medical.Appointment.Application.UseCases.RegisterPatient
+namespace GAP.Medical.Appointment.Application.UseCases
 {
     public class RegisterPatient : IUseCase
     {
@@ -38,6 +34,8 @@ namespace GAP.Medical.Appointment.Application.UseCases.RegisterPatient
                 _outputHandler.Error("Input is null.");
                 return;
             }
+
+
 
             var patient = _entityFactory.NewPatient(input.Patient.DocumentId
                                                     , input.Patient.Name

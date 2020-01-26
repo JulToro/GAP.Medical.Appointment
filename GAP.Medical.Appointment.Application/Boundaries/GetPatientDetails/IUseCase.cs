@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GAP.Medical.Appointment.Application.UseCases.CreateAppoinment
+namespace GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails
 {
     public interface IUseCase
     {
