@@ -36,15 +36,15 @@
             var patient = await _patientRepository.Get(input.PatientId);
             if (patient == null)
             {
-                _outputHandler.Error("The id Patient Id don't exist");
+                _outputHandler.Error("The id Patient Id doesn't exist");
                 return;
             }
 
-            var appointments = await _iAppointmentReporsitory.Get(input.PatientId);
+            var appointments = await _iAppointmentReporsitory.GetbyPatientId(input.PatientId);
 
             if (appointments == null)
             {
-                _outputHandler.Error("The patient don't have appointments");
+                _outputHandler.Error("The patient doesn't have appointments");
                 return;
             }
 

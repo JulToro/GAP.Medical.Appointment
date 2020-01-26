@@ -8,8 +8,8 @@ namespace GAP.Medical.Appointment.Application.Repositories
 {
     public interface IAppointmentReporsitory
     {
-        Task<IEnumerable<IAppointment>> Get(Guid medicalSpecialityId, DateTime dateIni, DateTime dateEnd);
-        Task<IEnumerable<IAppointment>> Get(Guid PatientId);
+        Task<IEnumerable<IAppointment>> GetbyPatientId(Guid PatientId);
+        Task<IEnumerable<IAppointment>> Get(Guid AppointmentId);
         Task Add(IAppointment appointment);
         Task Update(IAppointment appointment);
         Task Delete(IAppointment appointment);

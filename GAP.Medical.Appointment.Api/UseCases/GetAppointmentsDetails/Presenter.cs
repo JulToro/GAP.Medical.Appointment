@@ -38,7 +38,7 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetAppointmentsDetails
                                 appointmens
                     );
 
-            ViewModel = new CreatedAtRouteResult("GetPatient",
+            ViewModel = new CreatedAtRouteResult("GetAppointment",
                 new
                 {
                     patientId = newProfile.Patient.Id

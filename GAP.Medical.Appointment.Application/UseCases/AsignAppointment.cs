@@ -46,7 +46,7 @@ namespace GAP.Medical.Appointment.Application.UseCases
             var patient = await _patientRepository.Get(input._Appointment.PatientId);
             if (patient == null) 
             {
-                _outputHandler.Error("The id Patient Id don't exist");
+                _outputHandler.Error("The id Patient Id doesn't exist");
                 return;
             }
 
@@ -54,7 +54,7 @@ namespace GAP.Medical.Appointment.Application.UseCases
 
             if (medicalSpeciallity == null) 
             {
-                _outputHandler.Error("The id Medical Speciallity Id don't exist");
+                _outputHandler.Error("The id Medical Speciallity Id doesn't exist");
                 return;
             }
 

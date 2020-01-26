@@ -26,9 +26,11 @@
             var patient = await _patientRepository.Get(input.PatientId);
             if (patient == null) 
             {
-                _outputHandler.Error("The id Patient Id don't exist");
+                _outputHandler.Error("The id Patient Id doesn't exist");
                 return;
             }
+
+
             Output output = new Output(patient);
 
             _outputHandler.Handle(output);
