@@ -21,6 +21,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Repositories
         public async Task Add(IPatient patient)
         {
             await _context.Patients.AddAsync((Patient)patient);
+            await _context.SaveChangesAsync();
         }
 
         public async Task Delete(IPatient patient)

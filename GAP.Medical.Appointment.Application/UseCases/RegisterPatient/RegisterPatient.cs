@@ -47,7 +47,7 @@ namespace GAP.Medical.Appointment.Application.UseCases.RegisterPatient
                                                     );
 
             await _patientRepository.Add(patient);
-
+            await _unityOfWork.Save();
             Output output = new Output(patient);
 
             _outputHandler.Handle(output);

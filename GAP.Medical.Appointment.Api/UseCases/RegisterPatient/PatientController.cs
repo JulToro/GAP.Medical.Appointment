@@ -16,12 +16,12 @@
     /// </summary>
     [Produces("application/json")]
     [Route("api/[controller]")]
-    [EnableCors("MyPolicy")]
-    public class ProfileController : Controller
+    //[EnableCors("MyPolicy")]
+    public class PatientController : Controller
     {
         private readonly IUseCase _registerPatient;
         private readonly Presenter _presenter;
-        public ProfileController(
+        public PatientController(
             IUseCase registerPatient,
             Presenter presenter
             )

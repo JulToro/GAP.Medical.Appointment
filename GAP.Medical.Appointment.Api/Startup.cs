@@ -2,7 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GAP.Medical.Appointment.Application.Repositories;
+using GAP.Medical.Appointment.Application.Services;
+using GAP.Medical.Appointment.Domain;
 using GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess;
+using GAP.Medical.Appointment.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,8 +34,8 @@ namespace GAP.Medical.Appointment.Api
         {
             services.AddControllers();
             AddSwagger(services);
-            services.AddDbContext<AppointmentContext>(options => options.UseSqlServer("Server = DESKTOPJTORO\\TOROSQLSERVER; Database=BDPruebaNet;User Id=sa;Password=asdf.1234", b => b.MigrationsAssembly("GAP.Medical.Appointment.Infrastructure")));
-
+            AddAppoinmentCore(services);
+            AddSQLPersistence(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,12 +45,13 @@ namespace GAP.Medical.Appointment.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseCors("MyPolicy");
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -55,6 +60,26 @@ namespace GAP.Medical.Appointment.Api
 
             UseSwagger(app);
         }
+
+        private void AddSQLPersistence(IServiceCollection services)
+        {
+            services.AddDbContext<AppointmentContext>(options => options.UseSqlServer("Server = DESKTOPJTORO\\TOROSQLSERVER; Database=BDPruebaNet;User Id=sa;Password=asdf.1234", b => b.MigrationsAssembly("GAP.Medical.Appointment.Infrastructure")));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAppointmentReporsitory, AppointmentReporsitory>();
+            services.AddScoped<IPatientRepository, PatientRepository>();
+        }
+        private void AddAppoinmentCore(IServiceCollection services)
+        {
+            services.AddScoped<IEntitiesFactory, DefaultEntitiesFactory>();
+
+            services.AddScoped<GAP.Medical.Appointment.Api.UseCases.RegisterPatient.Presenter, GAP.Medical.Appointment.Api.UseCases.RegisterPatient.Presenter>();
+
+            services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.RegisterPatient.IOutputHandler>(x => x.GetRequiredService<GAP.Medical.Appointment.Api.UseCases.RegisterPatient.Presenter>());
+
+            services.AddScoped<GAP.Medical.Appointment.Application.RegisterPatient.UseCases.IUseCase, GAP.Medical.Appointment.Application.UseCases.RegisterPatient.RegisterPatient>();
+        }
+
+
         private void AddSwagger(IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
