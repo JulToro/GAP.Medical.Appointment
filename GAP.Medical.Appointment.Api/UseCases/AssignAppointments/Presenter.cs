@@ -23,7 +23,8 @@ namespace GAP.Medical.Appointment.Api.UseCases.AssignAppointments
                 output._appointment.Id,
                 output._appointment.MedicalSpecialityId,
                 output._appointment.PatientId,
-                output._appointment.AssignedDate
+                output._appointment.AssignedDate,
+                new MedicalSpecialityModel(output._appointment.MedicalSpeciality.Id, output._appointment.MedicalSpeciality.Name)
             );
 
             ViewModel = new CreatedAtRouteResult("GetAppointment",

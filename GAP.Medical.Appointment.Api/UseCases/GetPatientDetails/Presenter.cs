@@ -19,7 +19,7 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetPatientDetails
 
         public void Handle(Output output)
         {
-            ProfileModel newProfile = new ProfileModel(
+            PatientModel newProfile = new PatientModel(
                 output.Id,
                 output.DocumentId,
                 output.LastName,

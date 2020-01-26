@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GAP.Medical.Appointment.Domain.Appointments;
+using GAP.Medical.Appointment.Domain.MedicaSpecialties;
+using GAP.Medical.Appointment.Domain.Patients;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,14 +9,12 @@ namespace GAP.Medical.Appointment.Application.Boundaries.GetAppoinments
 {
     public class Output
     {
-        public Patient Patient { get; set; }
-        public MedicalSpeciality MedicalSpeciality { get; set; }        
+        public Patient Patient { get; set; }  
         public IEnumerable<Appointment> Appointments { get; set; }
 
-        public Output(Patient patient, MedicalSpeciality medicalSpeciality, IEnumerable<Appointment> appointments) 
+        public Output(IPatient patient,  IEnumerable<Boundaries.GetAppoinments.Appointment> appointments) 
         {
-            Patient = patient;
-            MedicalSpeciality = medicalSpeciality;
+            Patient = new Patient(patient);          
             Appointments = appointments;
         }
 

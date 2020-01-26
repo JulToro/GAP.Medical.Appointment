@@ -76,7 +76,7 @@ namespace GAP.Medical.Appointment.Application.UseCases
 
             await _iAppointmentReporsitory.Add(appoinment);
             await _unityOfWork.Save();
-            Output output = new Output(appoinment);
+            Output output = new Output(appoinment, medicalSpeciallity);
 
             _outputHandler.Handle(output);
 

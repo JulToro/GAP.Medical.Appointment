@@ -75,12 +75,19 @@ namespace GAP.Medical.Appointment.Api
 
             services.AddScoped<GAP.Medical.Appointment.Api.UseCases.RegisterPatient.Presenter, GAP.Medical.Appointment.Api.UseCases.RegisterPatient.Presenter>();
             services.AddScoped<GAP.Medical.Appointment.Api.UseCases.AssignAppointments.Presenter, GAP.Medical.Appointment.Api.UseCases.AssignAppointments.Presenter>();
+            services.AddScoped<GAP.Medical.Appointment.Api.UseCases.GetPatientDetails.Presenter, GAP.Medical.Appointment.Api.UseCases.GetPatientDetails.Presenter>();
+            services.AddScoped<GAP.Medical.Appointment.Api.UseCases.GetAppointmentsDetails.Presenter, GAP.Medical.Appointment.Api.UseCases.GetAppointmentsDetails.Presenter>();
+
 
             services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.RegisterPatient.IOutputHandler>(x => x.GetRequiredService<GAP.Medical.Appointment.Api.UseCases.RegisterPatient.Presenter>());
             services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.AsignAppoinments.IOutputHandler>(x => x.GetRequiredService<GAP.Medical.Appointment.Api.UseCases.AssignAppointments.Presenter>());
+            services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails.IOutputHandler>(x => x.GetRequiredService<GAP.Medical.Appointment.Api.UseCases.GetPatientDetails.Presenter>());
+            services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.GetAppoinments.IOutputHandler>(x => x.GetRequiredService<GAP.Medical.Appointment.Api.UseCases.GetAppointmentsDetails.Presenter>());
 
             services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.RegisterPatient.IUseCase, GAP.Medical.Appointment.Application.UseCases.RegisterPatient>();
             services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.AsignAppoinments.IUseCase, GAP.Medical.Appointment.Application.UseCases.AsignAppointment>();
+            services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails.IUseCase, GAP.Medical.Appointment.Application.UseCases.GetPatientDetails>();
+            services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.GetAppoinments.IUseCase, GAP.Medical.Appointment.Application.UseCases.GetAppointmentsDetails>();
 
         }
 

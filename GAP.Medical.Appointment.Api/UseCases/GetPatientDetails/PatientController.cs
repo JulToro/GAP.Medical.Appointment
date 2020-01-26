@@ -1,4 +1,4 @@
-﻿namespace GAP.Medical.Appointment.Api.UseCases.GetProfilePatient
+﻿namespace GAP.Medical.Appointment.Api.UseCases.GetPatientDetails
 {
     using System;
     using System.Collections.Generic;
@@ -34,10 +34,10 @@
         /// <summary>
         /// Get appoitment by Patient
         /// </summary>
-        /// <param name="id">Guid Id Patient</param>
+        /// <param name="PatientId">Guid Id Patient</param>
         /// <returns></returns>
         [HttpGet("{PatientId}")]
-        [ProducesResponseType(typeof(ProfileModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(PatientModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(400)]
         public async Task<ActionResult> Get(Guid PatientId)

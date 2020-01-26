@@ -14,7 +14,7 @@
 
         public void Handle(Output output)
         {
-            ProfileModel newProfile = new ProfileModel(
+            PatientModel newProfile = new PatientModel(
                 output._patient.Id,
                 output._patient.DocumentId,
                 output._patient.LastName,

@@ -4,7 +4,9 @@
     using GAP.Medical.Appointment.Application.Repositories;
     using GAP.Medical.Appointment.Application.Services;
     using GAP.Medical.Appointment.Domain;
+    using GAP.Medical.Appointment.Domain.MedicaSpecialties;
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     public class GetAppointmentsDetails : IUseCase
     {
@@ -12,9 +14,11 @@
         private readonly IOutputHandler _outputHandler;
         private readonly IPatientRepository _patientRepository;
         private readonly IAppointmentReporsitory _iAppointmentReporsitory;
+        private readonly IMedicalSpecialitiesRepository _iMedicalSpecialitiesRepository;
         private readonly IUnitOfWork _unityOfWork;
         public GetAppointmentsDetails(IPatientRepository iPatientRepository,
                                IAppointmentReporsitory iAppointmentReporsitory,
+                               IMedicalSpecialitiesRepository iMedicalSpecialitiesRepository,
                                IEntitiesFactory entityFactory,
                                IOutputHandler outputHandler,
                                IUnitOfWork unityOfWork
@@ -22,6 +26,7 @@
         {
             _patientRepository = iPatientRepository;
             _iAppointmentReporsitory = iAppointmentReporsitory;
+            _iMedicalSpecialitiesRepository = iMedicalSpecialitiesRepository;
             _outputHandler = outputHandler;
             _entityFactory = entityFactory;
             _unityOfWork = unityOfWork;
@@ -35,10 +40,29 @@
                 return;
             }
 
+            var appointments = await _iAppointmentReporsitory.Get(input.PatientId);
 
-            //Output output = new Output(patient);
+            if (appointments == null)
+            {
+                _outputHandler.Error("The patient don't have appointments");
+                return;
+            }
 
-            //_outputHandler.Handle(output);
+            List<Appointment> appointmentsOut = new List<Appointment>();
+
+            foreach (var item in appointments) 
+            {
+                var appointment = (Domain.Appointments.Appointment)item;
+                IMedicalSpeciality imedicalSpeciality = await _iMedicalSpecialitiesRepository.Get(appointment.MedicalSpecialityId);
+
+                Appointment appointmentOut = new Appointment(item, imedicalSpeciality);
+                appointmentsOut.Add(appointmentOut);
+            }
+            
+
+            Output output = new Output(patient, appointmentsOut);
+
+            _outputHandler.Handle(output);
         }
     }
 }
