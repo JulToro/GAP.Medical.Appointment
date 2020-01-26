@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GAP.Medical.Appointment.Infrastructure.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    [Migration("20200125230423_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200126003600_Modificacion1")]
+    partial class Modificacion1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                     b.Property<DateTime>("AssignedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("MedicalSpecialtyId")
+                    b.Property<Guid>("MedicalSpecialityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PatientId")
@@ -38,7 +38,11 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Accounts");
+                    b.HasIndex("MedicalSpecialityId");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("Appointment");
                 });
 
             modelBuilder.Entity("GAP.Medical.Appointment.Domain.MedicaSpecialties.MedicalSpeciality", b =>
@@ -48,6 +52,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -62,23 +67,43 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("DocumentId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Patients");
+                });
+
+            modelBuilder.Entity("GAP.Medical.Appointment.Domain.Appontments.Appointment", b =>
+                {
+                    b.HasOne("GAP.Medical.Appointment.Domain.MedicaSpecialties.MedicalSpeciality", "MedicalSpeciality")
+                        .WithMany("Apointments")
+                        .HasForeignKey("MedicalSpecialityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GAP.Medical.Appointment.Domain.Patients.Patient", "Patient")
+                        .WithMany("Apointments")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,5 @@
-﻿using GAP.Medical.Appointment.Domain.ValueObjects;
+﻿using GAP.Medical.Appointment.Domain.Appontments;
+using GAP.Medical.Appointment.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,7 @@ namespace GAP.Medical.Appointment.Domain.Patients
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
 
+        public virtual ICollection<Appointment.Domain.Appontments.Appointment> Apointments { get; set; }
         public IReadOnlyCollection<Guid> AppointmentIds
         {
             get
@@ -22,7 +24,7 @@ namespace GAP.Medical.Appointment.Domain.Patients
                 return readOnly;
             }
         }
-                
+
         private AppointmentsCollection _appoinments = new AppointmentsCollection();
         public Patient() { }
         public Patient(string documentId, string name, string lastName, string phoneNumber, string email) 
@@ -37,14 +39,14 @@ namespace GAP.Medical.Appointment.Domain.Patients
 
         public void RegisterAppoinment(Guid appointmentId)
         {
-            _appoinments.Add(appointmentId);
+        //   _appoinments.Add(appointmentId);
         }
 
         public void LoadAppoinments(ICollection<Guid> appoinmentIds)
         {
-            _appoinments = new AppointmentsCollection();
-            foreach (var account in appoinmentIds)
-                _appoinments.Add(account);
+           // _appoinments = new AppointmentsCollection();
+           // foreach (var account in appoinmentIds)
+             //   _appoinments.Add(account);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GAP.Medical.Appointment.Domain.MedicaSpecialties;
+using GAP.Medical.Appointment.Domain.Patients;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,14 +10,17 @@ namespace GAP.Medical.Appointment.Domain.Appontments
     {
         public Guid Id { get;  set; }
         public Guid PatientId { get; set; }
-        public Guid MedicalSpecialtyId { get; set; }
+        public Guid MedicalSpecialityId { get; set; }
         public DateTime AssignedDate { get; set; }
 
-        public Appointment(Guid patientId, Guid medicalSpecialtyId, DateTime assignedDate)
+        public virtual Patient Patient { get; set; }
+        public virtual MedicalSpeciality MedicalSpeciality { get; set; }
+
+        public Appointment(Guid patientId, Guid medicalSpecialityId, DateTime assignedDate)
         {
             Id = Guid.NewGuid();
             PatientId = patientId;
-            MedicalSpecialtyId = medicalSpecialtyId;
+            MedicalSpecialityId = medicalSpecialityId;
             AssignedDate = assignedDate;
         }
 

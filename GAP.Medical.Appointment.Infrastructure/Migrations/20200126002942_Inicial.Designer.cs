@@ -4,14 +4,16 @@ using GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GAP.Medical.Appointment.Infrastructure.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    partial class AppointmentContextModelSnapshot : ModelSnapshot
+    [Migration("20200126002942_Inicial")]
+    partial class Inicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,7 +30,10 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                     b.Property<DateTime>("AssignedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("MedicalSpecialityId")
+                    b.Property<Guid?>("MedicalSpecialityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("MedicalSpecialtyId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PatientId")
@@ -93,9 +98,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                 {
                     b.HasOne("GAP.Medical.Appointment.Domain.MedicaSpecialties.MedicalSpeciality", "MedicalSpeciality")
                         .WithMany("Apointments")
-                        .HasForeignKey("MedicalSpecialityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MedicalSpecialityId");
 
                     b.HasOne("GAP.Medical.Appointment.Domain.Patients.Patient", "Patient")
                         .WithMany("Apointments")

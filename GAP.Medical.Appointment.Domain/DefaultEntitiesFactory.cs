@@ -6,9 +6,9 @@ namespace GAP.Medical.Appointment.Domain
 {
     public class DefaultEntitiesFactory : IEntitiesFactory
     {
-        public IAppointment NewAppointment(Guid patientId, Guid medicalSpecialtyId, DateTime assignedDate)
+        public IAppointment NewAppointment(Guid patientId, Guid medicalSpecialityId, DateTime assignedDate)
         {
-            var appoinment = new Appontments.Appointment(patientId, medicalSpecialtyId, assignedDate);
+            var appoinment = new Appontments.Appointment(patientId, medicalSpecialityId, assignedDate);
             return appoinment;
         }
 
