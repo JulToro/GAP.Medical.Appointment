@@ -5,6 +5,8 @@
     using System.Linq;
     using System.Threading.Tasks;
     using GAP.Medical.Appointment.Application.Boundaries.CancelAppointment;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     
@@ -14,6 +16,7 @@
     [Produces("application/json")]
     [Route("api/[controller]")]
     //[EnableCors("MyPolicy")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AppointmentController : Controller
     {
         private readonly IUseCase _CancelAppointment;

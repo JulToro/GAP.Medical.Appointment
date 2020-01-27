@@ -30,12 +30,15 @@ namespace GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess
 
 
             modelBuilder.Entity<Patient>().HasKey(t => t.Id);
-            modelBuilder.Entity<Patient>().Property(t => t.DocumentId).IsRequired();
+            modelBuilder.Entity<Patient>().HasIndex(b => b.DocumentId).IsUnique();
             modelBuilder.Entity<Patient>().Property(t => t.Name).IsRequired();
             modelBuilder.Entity<Patient>().Property(t => t.LastName).IsRequired();
             modelBuilder.Entity<Patient>().Property(t => t.PhoneNumber).IsRequired();
             modelBuilder.Entity<Patient>().Property(t => t.Email).IsRequired();
+            modelBuilder.Entity<Patient>().HasIndex(b => b.Username).IsUnique();
+            modelBuilder.Entity<Patient>().Property(t => t.Password).IsRequired();
             modelBuilder.Entity<Patient>().HasMany(t => t.Apointments).WithOne(b => b.Patient) ;
+            modelBuilder.Entity<Patient>().HasData(new Patient("1234","Julian","Toro","310438018","juliantvi@gm.com","juliantoro","clave123",DateTime.Now,true));
 
             modelBuilder.Entity<Apointmenst.Appointment>();                   
         }

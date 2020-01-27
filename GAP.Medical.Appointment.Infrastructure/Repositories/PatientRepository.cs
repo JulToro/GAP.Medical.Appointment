@@ -37,6 +37,13 @@ namespace GAP.Medical.Appointment.Infrastructure.Repositories
             return Patient;
         }
 
+        public async Task<IPatient> Get(string user, string password)
+        {
+            var Patient = await _context.Patients.Where(x => x.Username == user && x.Password == password).Select(y => y).SingleOrDefaultAsync();
+
+            return Patient;
+        }
+
         public async Task Update(IPatient patient)
         {
             _context.Patients.Update((Patient)patient);

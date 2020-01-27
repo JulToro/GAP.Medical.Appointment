@@ -20,7 +20,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D636547A-F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GAP.Medical.Appointment.Api", "GAP.Medical.Appointment.Api\GAP.Medical.Appointment.Api.csproj", "{72A0959C-F5BE-426C-B38B-A680CDC7CCA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAP.Medical.Appointment.Security", "GAP.Medical.Appointment.Security\GAP.Medical.Appointment.Security.csproj", "{F3A806B6-32DA-4720-9C6B-2334B91B36D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GAP.Medical.Appointment.Security", "GAP.Medical.Appointment.Security\GAP.Medical.Appointment.Security.csproj", "{F3A806B6-32DA-4720-9C6B-2334B91B36D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAP.Medical.Appointment.AcceptaceTest", "GAP.Medical.Appointment.AcceptaceTest\GAP.Medical.Appointment.AcceptaceTest.csproj", "{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAP.MedicalAppointment.IntegrationTest", "GAP.MedicalAppointment.IntegrationTest\GAP.MedicalAppointment.IntegrationTest.csproj", "{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -136,9 +140,53 @@ Global
 		{F3A806B6-32DA-4720-9C6B-2334B91B36D5}.Release|x64.Build.0 = Release|Any CPU
 		{F3A806B6-32DA-4720-9C6B-2334B91B36D5}.Release|x86.ActiveCfg = Release|Any CPU
 		{F3A806B6-32DA-4720-9C6B-2334B91B36D5}.Release|x86.Build.0 = Release|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Debug|ARM.Build.0 = Debug|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Debug|x64.Build.0 = Debug|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Debug|x86.Build.0 = Debug|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Release|ARM.Build.0 = Release|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Release|ARM64.Build.0 = Release|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Release|x64.ActiveCfg = Release|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Release|x64.Build.0 = Release|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Release|x86.ActiveCfg = Release|Any CPU
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}.Release|x86.Build.0 = Release|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Debug|ARM.Build.0 = Debug|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Debug|x64.Build.0 = Debug|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Debug|x86.Build.0 = Debug|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Release|ARM.Build.0 = Release|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Release|ARM64.Build.0 = Release|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Release|x64.ActiveCfg = Release|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Release|x64.Build.0 = Release|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Release|x86.ActiveCfg = Release|Any CPU
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC4BCFAD-7CF6-44AC-B508-F324C8C00808} = {D636547A-F0B0-495C-9805-CE0AF92849B4}
+		{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3} = {D636547A-F0B0-495C-9805-CE0AF92849B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0D8C31B-7F68-42FE-B09F-7CAF599EBC2E}

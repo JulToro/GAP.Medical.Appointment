@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using GAP.Medical.Appointment.Api.Models;
 using GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpeciality;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +18,8 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetMedicalSpecialities
     /// </summary>
     [Produces("application/json")]
     [Route("api/[controller]")]
-    [EnableCors("MyPolicy")]
+    //[EnableCors("MyPolicy")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class MedicalSpecialityController : Controller
     {
         private readonly IUseCase _medicalSpecialities;

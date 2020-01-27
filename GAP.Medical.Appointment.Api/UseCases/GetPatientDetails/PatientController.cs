@@ -7,6 +7,8 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetPatientDetails
     using GAP.Medical.Appointment.Api.Models;
     using GAP.Medical.Appointment.Api.UseCases.RegisterPatient;
     using GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Cors;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -18,6 +20,7 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetPatientDetails
     [Produces("application/json")]
     [Route("api/[controller]")]
     [EnableCors("MyPolicy")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class PatientController : Controller
     {
         private readonly IUseCase _Patient;

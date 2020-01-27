@@ -4,14 +4,16 @@ using GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GAP.Medical.Appointment.Infrastructure.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    partial class AppointmentContextModelSnapshot : ModelSnapshot
+    [Migration("20200127014231_InicialDb")]
+    partial class InicialDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,22 +62,22 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ad43a406-1c6e-4aaa-98e0-635d50a01525"),
+                            Id = new Guid("3c61c70d-c19c-4406-81d8-8ca727c42ae4"),
                             Name = "General medicine"
                         },
                         new
                         {
-                            Id = new Guid("e159d627-69c9-4dd6-ba3a-00e8eb8b2320"),
+                            Id = new Guid("60bdf46a-d713-429a-beb7-2854deb6a7ef"),
                             Name = "Odontology"
                         },
                         new
                         {
-                            Id = new Guid("8c1c6fc1-fdb5-4797-abdf-bbd5d7330de6"),
+                            Id = new Guid("05a3d2af-0c70-4837-91a5-e0b4e723cafd"),
                             Name = "Pediatrics"
                         },
                         new
                         {
-                            Id = new Guid("6c0fa8ea-a4d5-4e77-95aa-a2462296df58"),
+                            Id = new Guid("33f99666-e12f-49c0-83d2-677527225334"),
                             Name = "Neurology"
                         });
                 });
@@ -129,21 +131,6 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                         .HasFilter("[Username] IS NOT NULL");
 
                     b.ToTable("Patients");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("8234096d-a811-454c-9e13-abaf4617400d"),
-                            CreationDate = new DateTime(2020, 1, 26, 23, 6, 42, 293, DateTimeKind.Local).AddTicks(5564),
-                            DocumentId = "1234",
-                            Email = "juliantvi@gm.com",
-                            IsActive = true,
-                            LastName = "Toro",
-                            Name = "Julian",
-                            Password = "clave123",
-                            PhoneNumber = "310438018",
-                            Username = "juliantoro"
-                        });
                 });
 
             modelBuilder.Entity("GAP.Medical.Appointment.Domain.Appointments.Appointment", b =>

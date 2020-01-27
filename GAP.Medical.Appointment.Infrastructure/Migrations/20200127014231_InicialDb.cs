@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GAP.Medical.Appointment.Infrastructure.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InicialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,13 +24,13 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    DocumentId = table.Column<string>(nullable: false),
+                    DocumentId = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
                     PhoneNumber = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: false),
                     Username = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: false),
                     CreationDate = table.Column<DateTime>(nullable: false),
                     IsActive = table.Column<bool>(nullable: true)
                 },
@@ -70,10 +70,10 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("1902e3f0-ca1b-4943-b19a-46f36840bfdc"), "General medicine" },
-                    { new Guid("fb347a8f-660b-4c19-8a2f-9670975846b8"), "Odontology" },
-                    { new Guid("9bc51ef5-4dfe-4cb3-a6c0-abcf88059adb"), "Pediatrics" },
-                    { new Guid("16fffc55-aca2-4fdb-862e-c32acb505920"), "Neurology" }
+                    { new Guid("3c61c70d-c19c-4406-81d8-8ca727c42ae4"), "General medicine" },
+                    { new Guid("60bdf46a-d713-429a-beb7-2854deb6a7ef"), "Odontology" },
+                    { new Guid("05a3d2af-0c70-4837-91a5-e0b4e723cafd"), "Pediatrics" },
+                    { new Guid("33f99666-e12f-49c0-83d2-677527225334"), "Neurology" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -85,6 +85,20 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                 name: "IX_Appointment_PatientId",
                 table: "Appointment",
                 column: "PatientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Patients_DocumentId",
+                table: "Patients",
+                column: "DocumentId",
+                unique: true,
+                filter: "[DocumentId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Patients_Username",
+                table: "Patients",
+                column: "Username",
+                unique: true,
+                filter: "[Username] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -10,18 +10,21 @@ namespace GAP.Medical.Appointment.Security.Entities
 {
     public class JWToken
     {
-        public string GenerateJWTToken(Patient model, string key, string Issuer)
+        public string GenerateJWTToken(IPatient model, string key, string Issuer)
         {
+
+            var patient = (Patient)model;
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Sub, model.Name + " " + model.LastName),
-                new Claim(JwtRegisteredClaimNames.Sub, model.Email),
-                new Claim("CreatedDate", model.CreationDate.ToString()),
+                new Claim(JwtRegisteredClaimNames.Sub, patient.Name + " " + patient.LastName),
+                new Claim(JwtRegisteredClaimNames.Sub, patient.Id.ToString()),
+                new Claim("CreatedDate", patient.CreationDate.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
-            var token = new JwtSecurityToken(Issuer,
+            var token = new JwtSecurityToken(
+                Issuer,
                 Issuer,
                 claims,
                 expires: DateTime.Now.AddMinutes(120),

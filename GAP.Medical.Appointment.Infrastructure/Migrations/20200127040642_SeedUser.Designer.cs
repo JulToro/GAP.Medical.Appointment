@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GAP.Medical.Appointment.Infrastructure.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    [Migration("20200127001619_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200127040642_SeedUser")]
+    partial class SeedUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -62,22 +62,22 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("1902e3f0-ca1b-4943-b19a-46f36840bfdc"),
+                            Id = new Guid("ad43a406-1c6e-4aaa-98e0-635d50a01525"),
                             Name = "General medicine"
                         },
                         new
                         {
-                            Id = new Guid("fb347a8f-660b-4c19-8a2f-9670975846b8"),
+                            Id = new Guid("e159d627-69c9-4dd6-ba3a-00e8eb8b2320"),
                             Name = "Odontology"
                         },
                         new
                         {
-                            Id = new Guid("9bc51ef5-4dfe-4cb3-a6c0-abcf88059adb"),
+                            Id = new Guid("8c1c6fc1-fdb5-4797-abdf-bbd5d7330de6"),
                             Name = "Pediatrics"
                         },
                         new
                         {
-                            Id = new Guid("16fffc55-aca2-4fdb-862e-c32acb505920"),
+                            Id = new Guid("6c0fa8ea-a4d5-4e77-95aa-a2462296df58"),
                             Name = "Neurology"
                         });
                 });
@@ -92,8 +92,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DocumentId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -111,6 +110,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
@@ -118,11 +118,34 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DocumentId")
+                        .IsUnique()
+                        .HasFilter("[DocumentId] IS NOT NULL");
+
+                    b.HasIndex("Username")
+                        .IsUnique()
+                        .HasFilter("[Username] IS NOT NULL");
+
                     b.ToTable("Patients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("8234096d-a811-454c-9e13-abaf4617400d"),
+                            CreationDate = new DateTime(2020, 1, 26, 23, 6, 42, 293, DateTimeKind.Local).AddTicks(5564),
+                            DocumentId = "1234",
+                            Email = "juliantvi@gm.com",
+                            IsActive = true,
+                            LastName = "Toro",
+                            Name = "Julian",
+                            Password = "clave123",
+                            PhoneNumber = "310438018",
+                            Username = "juliantoro"
+                        });
                 });
 
             modelBuilder.Entity("GAP.Medical.Appointment.Domain.Appointments.Appointment", b =>

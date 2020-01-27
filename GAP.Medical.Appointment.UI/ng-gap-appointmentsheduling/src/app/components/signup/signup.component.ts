@@ -62,8 +62,6 @@ export class SignupComponent implements OnInit {
     }, error => this.errorMessage = <any>error);  ;
   }
 
-
-
   getPatient(){
     debugger;  
     this.patientModel.documentId =  this.singupForm.controls.documentId.value;
