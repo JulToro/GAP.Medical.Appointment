@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GAP.Medical.Appointment.Infrastructure.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    [Migration("20200126020536_SeedMedicalSpecialities")]
-    partial class SeedMedicalSpecialities
+    [Migration("20200127001619_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GAP.Medical.Appointment.Domain.Appontments.Appointment", b =>
+            modelBuilder.Entity("GAP.Medical.Appointment.Domain.Appointments.Appointment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,22 +62,22 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a41769f7-7cb0-471d-90d5-54cc2a634694"),
+                            Id = new Guid("1902e3f0-ca1b-4943-b19a-46f36840bfdc"),
                             Name = "General medicine"
                         },
                         new
                         {
-                            Id = new Guid("73468716-dba2-48e1-8712-9b90eeb10198"),
+                            Id = new Guid("fb347a8f-660b-4c19-8a2f-9670975846b8"),
                             Name = "Odontology"
                         },
                         new
                         {
-                            Id = new Guid("fa2b3abc-064b-41db-ad04-9251ae15b5bc"),
+                            Id = new Guid("9bc51ef5-4dfe-4cb3-a6c0-abcf88059adb"),
                             Name = "Pediatrics"
                         },
                         new
                         {
-                            Id = new Guid("ed9b53c5-52b7-4fdf-bed5-3efc7593a8d0"),
+                            Id = new Guid("16fffc55-aca2-4fdb-862e-c32acb505920"),
                             Name = "Neurology"
                         });
                 });
@@ -88,6 +88,9 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("DocumentId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -95,6 +98,9 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -104,8 +110,14 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -113,7 +125,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                     b.ToTable("Patients");
                 });
 
-            modelBuilder.Entity("GAP.Medical.Appointment.Domain.Appontments.Appointment", b =>
+            modelBuilder.Entity("GAP.Medical.Appointment.Domain.Appointments.Appointment", b =>
                 {
                     b.HasOne("GAP.Medical.Appointment.Domain.MedicaSpecialties.MedicalSpeciality", "MedicalSpeciality")
                         .WithMany("Apointments")

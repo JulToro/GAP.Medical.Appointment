@@ -1,7 +1,8 @@
-﻿using GAP.Medical.Appointment.Application.Boundaries.RegisterPatient;
+using GAP.Medical.Appointment.Application.Boundaries.RegisterPatient;
 using GAP.Medical.Appointment.Application.Repositories;
 using GAP.Medical.Appointment.Application.Services;
 using GAP.Medical.Appointment.Domain;
+using System;
 using System.Threading.Tasks;
 
 namespace GAP.Medical.Appointment.Application.UseCases
@@ -42,6 +43,10 @@ namespace GAP.Medical.Appointment.Application.UseCases
                                                     , input.Patient.LastName
                                                     , input.Patient.PhoneNumber
                                                     , input.Patient.Email
+                                                    , input.Patient.Username
+                                                    , input.Patient.Password
+                                                    , new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)
+                                                    , true
                                                     );
 
             await _patientRepository.Add(patient);

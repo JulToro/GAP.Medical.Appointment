@@ -1,4 +1,4 @@
-﻿using GAP.Medical.Appointment.Domain.Appointments;
+using GAP.Medical.Appointment.Domain.Appointments;
 using GAP.Medical.Appointment.Domain.Patients;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ namespace GAP.Medical.Appointment.Domain
 {
     public interface IEntitiesFactory
     {
-        IPatient NewPatient(string documentId, string name, string lastName, string phoneNumber, string email);
+        IPatient NewPatient(string documentId, string name, string lastName, string phoneNumber, string email, string userName, string password, DateTime CreationDate, bool IsActive);
         IAppointment NewAppointment(Guid patientId, Guid medicalSpecialityId, DateTime assignedDate);
     }
 }

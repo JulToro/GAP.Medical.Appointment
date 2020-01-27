@@ -1,17 +1,19 @@
-﻿namespace GAP.Medical.Appointment.Api.UseCases.RegisterPatient
+namespace GAP.Medical.Appointment.Api.UseCases.RegisterPatient
 {
     using System.Threading.Tasks;
     using GAP.Medical.Appointment.Application.Boundaries.RegisterPatient;
     using DomainPatient = GAP.Medical.Appointment.Domain.Patients;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Cors;
+    using System;
 
     /// <summary>
     /// Class Profile 
     /// </summary>
     [Produces("application/json")]
     [Route("api/[controller]")]
-    //[EnableCors("MyPolicy")]
+    [EnableCors("MyPolicy")]
     public class PatientController : Controller
     {
         private readonly IUseCase _registerPatient;
@@ -38,7 +40,7 @@
         [ProducesResponseType(400)]
         public async Task<ActionResult> Post([FromBody]RegisterPatientRequest patient)
         {
-            await _registerPatient.Execute(new Input(new DomainPatient.Patient(patient.DocumentId, patient.Name, patient.LastName, patient.PhoneNumber, patient.Email)));
+            await _registerPatient.Execute(new Input(new DomainPatient.Patient(patient.DocumentId, patient.Name, patient.LastName, patient.PhoneNumber, patient.Email,patient.UserName,patient.Password,new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day),true)));
             return Ok(_presenter.ViewModel);
         }
     }

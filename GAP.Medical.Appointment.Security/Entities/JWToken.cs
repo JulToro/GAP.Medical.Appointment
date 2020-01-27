@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using GAP.Medical.Appointment.Domain.Patients;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -9,7 +10,7 @@ namespace GAP.Medical.Appointment.Security.Entities
 {
     public class JWToken
     {
-        public string GenerateJWTToken(User model, string key, string Issuer)
+        public string GenerateJWTToken(Patient model, string key, string Issuer)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -17,7 +18,7 @@ namespace GAP.Medical.Appointment.Security.Entities
             var claims = new[] {
                 new Claim(JwtRegisteredClaimNames.Sub, model.Name + " " + model.LastName),
                 new Claim(JwtRegisteredClaimNames.Sub, model.Email),
-                new Claim("CreatedDate", model.CreatedDate.ToString()),
+                new Claim("CreatedDate", model.CreationDate.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             };
             var token = new JwtSecurityToken(Issuer,

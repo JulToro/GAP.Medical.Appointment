@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GAP.Medical.Appointment.Infrastructure.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,11 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                     Name = table.Column<string>(nullable: false),
                     LastName = table.Column<string>(nullable: false),
                     PhoneNumber = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: false)
+                    Email = table.Column<string>(nullable: false),
+                    Username = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true),
+                    CreationDate = table.Column<DateTime>(nullable: false),
+                    IsActive = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,9 +45,8 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     PatientId = table.Column<Guid>(nullable: false),
-                    MedicalSpecialtyId = table.Column<Guid>(nullable: false),
-                    AssignedDate = table.Column<DateTime>(nullable: false),
-                    MedicalSpecialityId = table.Column<Guid>(nullable: true)
+                    MedicalSpecialityId = table.Column<Guid>(nullable: false),
+                    AssignedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,13 +56,24 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                         column: x => x.MedicalSpecialityId,
                         principalTable: "MedicalSpecialities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Appointment_Patients_PatientId",
                         column: x => x.PatientId,
                         principalTable: "Patients",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "MedicalSpecialities",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { new Guid("1902e3f0-ca1b-4943-b19a-46f36840bfdc"), "General medicine" },
+                    { new Guid("fb347a8f-660b-4c19-8a2f-9670975846b8"), "Odontology" },
+                    { new Guid("9bc51ef5-4dfe-4cb3-a6c0-abcf88059adb"), "Pediatrics" },
+                    { new Guid("16fffc55-aca2-4fdb-862e-c32acb505920"), "Neurology" }
                 });
 
             migrationBuilder.CreateIndex(

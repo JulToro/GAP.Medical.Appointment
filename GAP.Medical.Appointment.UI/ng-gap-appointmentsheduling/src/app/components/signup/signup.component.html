@@ -1,1 +1,36 @@
-<p>signup works!</p>
+<main>
+        <form [formGroup]="singupForm" (ngSubmit)="onSubmit()">
+            <fieldset>
+                <label for="text">Identification:</label>
+                <input type="text" formControlName="documentId" id="documentId">
+            </fieldset>
+            <fieldset>
+                <label for="text">First Name:</label>
+                <input type="text" formControlName="name" maxlength="40" id="name">
+              </fieldset>
+              <fieldset>
+                <label for="text">Last Name:</label>
+                <input type="text" formControlName="lastName" maxlength="40" id="lastName">
+              </fieldset>
+              <fieldset>
+                <label for="tel">Phone Number:</label>
+                <input type="tel" formControlName="phoneNumber" maxlength="20" id="phoneNumber">
+              </fieldset>
+              <fieldset>
+                <label for="email">Email: </label>
+                <input type="email" formControlName="email" id="email">
+              </fieldset>
+              <fieldset>
+                <label for="text">User Name: </label>
+                <input type="text" formControlName="userName" id="userName">
+              </fieldset>
+              <fieldset>
+                <label for="password">Password: </label>
+                <input type="password" formControlName="password" id="password">
+              </fieldset>
+               <button type="submit">
+                Register
+              </button>            
+        </form>
+</main>
+

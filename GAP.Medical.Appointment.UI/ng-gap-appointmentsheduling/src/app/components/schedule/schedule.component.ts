@@ -14,9 +14,7 @@ export class ScheduleComponent implements OnInit {
 
   dateNow = Date.now.toString();
 
-
-  public errorMessage: string;
-  
+  public errorMessage: string;  
 
   constructor(private formBuilder: FormBuilder, private medicalSpecialityService: MedicalSpecialityService) { }
 
@@ -36,10 +34,7 @@ export class ScheduleComponent implements OnInit {
   {    
     this.medicalSpecialityService.getMedicalSpecialities().subscribe((res: any)=>
     {      
-      var test = res.value;
-      this.medicalSpecialitys = test;
-
-      console.log(test)
+      this.medicalSpecialitys = res.value;
     }, error => this.errorMessage = <any>error);  
   }
 

@@ -1,4 +1,4 @@
-﻿namespace GAP.Medical.Appointment.Api.UseCases.GetPatientDetails
+namespace GAP.Medical.Appointment.Api.UseCases.GetPatientDetails
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@
     /// </summary>
     [Produces("application/json")]
     [Route("api/[controller]")]
-    //[EnableCors("MyPolicy")]
+    [EnableCors("MyPolicy")]
     public class PatientController : Controller
     {
         private readonly IUseCase _Patient;

@@ -16,9 +16,9 @@ export class AppointmentService {
                                       .set("X-CustomHeader", "custom header value");;
 
     
-     return this.http.get<any>("https://localhost:44317/api/Appointment"+idUser, {headers})
+     return this.http.get<any>("https://localhost:44317/api/Appointment" + idUser, {headers})
                    .subscribe((result:any)=>{
-                      
+
 
                    });
   }

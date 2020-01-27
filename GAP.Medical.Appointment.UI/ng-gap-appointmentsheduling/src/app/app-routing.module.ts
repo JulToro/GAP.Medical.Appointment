@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { MainComponent } from './components/main/main.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { PatientComponent } from './components/patient/patient.component';
 import { AppointmentComponent } from './components/appointment/appointment.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [

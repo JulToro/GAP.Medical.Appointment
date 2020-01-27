@@ -1,4 +1,4 @@
-﻿using GAP.Medical.Appointment.Domain.Patients;
+using GAP.Medical.Appointment.Domain.Patients;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +13,8 @@ namespace GAP.Medical.Appointment.Application.Boundaries.RegisterPatient
         public string LastName { get; }
         public string PhoneNumber { get; }
         public string Email { get; }
+        public string UserName { get; }
+        public string Password { get; }
 
         public Patient(IPatient patient)
         {
@@ -24,6 +26,9 @@ namespace GAP.Medical.Appointment.Application.Boundaries.RegisterPatient
             LastName = patientRegister.LastName;
             PhoneNumber = patientRegister.PhoneNumber;
             Email = patientRegister.Email;
+            UserName = patientRegister.Username;
+            Password = patientRegister.Password;
+            
         }
     }
 }

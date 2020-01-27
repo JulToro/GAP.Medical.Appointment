@@ -1,5 +1,5 @@
-export interface AppointmentModel {
+export interface LoginModel {
     id: string;
-    PatientId: string;    
+    UserName: string;    
     Password : string;
 }       
