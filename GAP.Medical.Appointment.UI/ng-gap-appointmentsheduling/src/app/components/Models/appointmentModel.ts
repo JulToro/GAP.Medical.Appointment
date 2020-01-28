@@ -1,9 +1,9 @@
-import { MedicalSpecialityModel } from './medicalSpecialityModel';
+import { MedicalSpecialtyModel } from './medicalSpecialtyModel';
 
 export interface AppointmentModel {
     id: string;
     PatientId: string;    
     AssignedDate: string;
-    MedicalSpecialityId: string;
-    MedicalSpeciality: MedicalSpecialityModel;
+    MedicalSpecialtyId: string;
+    MedicalSpecialty: MedicalSpecialtyModel;
 }       

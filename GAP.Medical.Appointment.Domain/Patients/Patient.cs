@@ -21,7 +21,7 @@ namespace GAP.Medical.Appointment.Domain.Patients
 
 
 
-        public virtual ICollection<Appointment.Domain.Appointments.Appointment> Apointments { get; set; }
+        public virtual ICollection<Appointment.Domain.Appointments.Appointment> Appointments { get; set; }
         public IReadOnlyCollection<Guid> AppointmentIds
         {
             get

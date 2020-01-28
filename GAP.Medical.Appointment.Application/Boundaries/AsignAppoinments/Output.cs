@@ -8,9 +8,9 @@
     public class Output
     {
         public Appointment _appointment { get; set; }
-        public Output(IAppointment appointment, IMedicalSpeciality medicalSpeciality)
+        public Output(IAppointment appointment, IMedicalSpecialty medicalSpecialty)
         {
-            _appointment = new GAP.Medical.Appointment.Application.Boundaries.AsignAppoinments.Appointment(appointment, medicalSpeciality);
+            _appointment = new GAP.Medical.Appointment.Application.Boundaries.AsignAppoinments.Appointment(appointment, medicalSpecialty);
         }
     }
 }

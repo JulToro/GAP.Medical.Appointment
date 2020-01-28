@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpeciality
+namespace GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpecialty
 {
     public interface IOutputHandler : IErrorHandler
     {

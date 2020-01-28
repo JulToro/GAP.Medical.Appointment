@@ -9,7 +9,7 @@ namespace GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails
     {
         public Guid Id { get; set; }
         public Guid PatientId { get; set; }
-        public Guid MedicalSpecialityId { get; set; }
+        public Guid MedicalSpecialtyId { get; set; }
         public DateTime AssignedDate { get; set; }
 
 
@@ -19,7 +19,7 @@ namespace GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails
 
             Id = Appointment.Id;
             PatientId = Appointment.PatientId;
-            MedicalSpecialityId = Appointment.MedicalSpecialityId;
+            MedicalSpecialtyId = Appointment.MedicalSpecialtyId;
             AssignedDate = Appointment.AssignedDate;
         }
     }

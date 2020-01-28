@@ -4,14 +4,14 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using GAP.Medical.Appointment.Api.Models;
-using GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpeciality;
+using GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpecialty;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GAP.Medical.Appointment.Api.UseCases.GetMedicalSpecialities
+namespace GAP.Medical.Appointment.Api.UseCases.GetMedicalSpecialties
 { 
     /// <summary>
     /// Class Profile 
@@ -20,16 +20,16 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetMedicalSpecialities
     [Route("api/[controller]")]
     //[EnableCors("MyPolicy")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class MedicalSpecialityController : Controller
+    public class MedicalSpecialtyController : Controller
     {
-        private readonly IUseCase _medicalSpecialities;
+        private readonly IUseCase _medicalSpecialties;
         private readonly Presenter _presenter;
-        public MedicalSpecialityController(
+        public MedicalSpecialtyController(
             IUseCase registerPatient,
             Presenter presenter
             )
         {
-            _medicalSpecialities = registerPatient;
+            _medicalSpecialties = registerPatient;
             _presenter = presenter;
         }       
         
@@ -39,12 +39,12 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetMedicalSpecialities
         /// </summary>
         /// <returns></returns>
         [HttpGet("")]
-        [ProducesResponseType(typeof(List<MedicalSpecialityModel>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<MedicalSpecialtyModel>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(400)]
         public async Task<ActionResult> Get()
         {
-            await _medicalSpecialities.Execute();
+            await _medicalSpecialties.Execute();
             return Ok(_presenter.ViewModel);
         }
 

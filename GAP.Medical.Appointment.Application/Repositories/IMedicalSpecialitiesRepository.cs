@@ -6,9 +6,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public interface IMedicalSpecialitiesRepository
+    public interface IMedicalSpecialtiesRepository
     {
-        Task<IEnumerable<IMedicalSpeciality>> Get();
-        Task<IMedicalSpeciality> Get(Guid id);
+        Task<IEnumerable<IMedicalSpecialty>> Get();
+        Task<IMedicalSpecialty> Get(Guid id);
     }
 }

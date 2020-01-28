@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GAP.Medical.Appointment.Infrastructure.Migrations
 {
-    public partial class InicialDb : Migration
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "MedicalSpecialities",
+                name: "MedicalSpecialties",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
@@ -16,7 +16,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MedicalSpecialities", x => x.Id);
+                    table.PrimaryKey("PK_MedicalSpecialties", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -45,16 +45,16 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     PatientId = table.Column<Guid>(nullable: false),
-                    MedicalSpecialityId = table.Column<Guid>(nullable: false),
+                    MedicalSpecialtyId = table.Column<Guid>(nullable: false),
                     AssignedDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Appointment", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Appointment_MedicalSpecialities_MedicalSpecialityId",
-                        column: x => x.MedicalSpecialityId,
-                        principalTable: "MedicalSpecialities",
+                        name: "FK_Appointment_MedicalSpecialties_MedicalSpecialtyId",
+                        column: x => x.MedicalSpecialtyId,
+                        principalTable: "MedicalSpecialties",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -66,20 +66,25 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "MedicalSpecialities",
+                table: "MedicalSpecialties",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("3c61c70d-c19c-4406-81d8-8ca727c42ae4"), "General medicine" },
-                    { new Guid("60bdf46a-d713-429a-beb7-2854deb6a7ef"), "Odontology" },
-                    { new Guid("05a3d2af-0c70-4837-91a5-e0b4e723cafd"), "Pediatrics" },
-                    { new Guid("33f99666-e12f-49c0-83d2-677527225334"), "Neurology" }
+                    { new Guid("b56a0a81-7d1e-4ae6-ab97-34d66807c314"), "General medicine" },
+                    { new Guid("f4ab8317-d992-4bf5-81e2-2e0b24d6c8f7"), "Odontology" },
+                    { new Guid("f992b696-d234-45cb-a7be-9a86129289d7"), "Pediatrics" },
+                    { new Guid("5b1f17f3-0e0e-4f09-82fd-21688472aead"), "Neurology" }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Patients",
+                columns: new[] { "Id", "CreationDate", "DocumentId", "Email", "IsActive", "LastName", "Name", "Password", "PhoneNumber", "Username" },
+                values: new object[] { new Guid("5d08a8eb-bc49-49b0-9a47-aadbb4ca94c1"), new DateTime(2020, 1, 28, 0, 34, 14, 773, DateTimeKind.Local).AddTicks(8369), "1234", "juliantvi@gm.com", true, "Toro", "Julian", "clave123", "310438018", "juliantoro" });
+
             migrationBuilder.CreateIndex(
-                name: "IX_Appointment_MedicalSpecialityId",
+                name: "IX_Appointment_MedicalSpecialtyId",
                 table: "Appointment",
-                column: "MedicalSpecialityId");
+                column: "MedicalSpecialtyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointment_PatientId",
@@ -107,7 +112,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                 name: "Appointment");
 
             migrationBuilder.DropTable(
-                name: "MedicalSpecialities");
+                name: "MedicalSpecialties");
 
             migrationBuilder.DropTable(
                 name: "Patients");

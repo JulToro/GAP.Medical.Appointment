@@ -17,11 +17,11 @@ namespace GAP.Medical.Appointment.Application.UseCases
         private readonly IOutputHandler _outputHandler;
         private readonly IPatientRepository _patientRepository;
         private readonly IAppointmentReporsitory _iAppointmentReporsitory;
-        private readonly IMedicalSpecialitiesRepository _iMedicalSpecialitiesRepository;
+        private readonly IMedicalSpecialtiesRepository _iMedicalSpecialtiesRepository;
         private readonly IUnitOfWork _unityOfWork;
         public AsignAppointment(IPatientRepository iPatientRepository,
                                IAppointmentReporsitory iAppointmentReporsitory,
-                               IMedicalSpecialitiesRepository iMedicalSpecialitiesRepository,
+                               IMedicalSpecialtiesRepository iMedicalSpecialtiesRepository,
                                IEntitiesFactory entityFactory,
                                IOutputHandler outputHandler,
                                IUnitOfWork unityOfWork
@@ -29,7 +29,7 @@ namespace GAP.Medical.Appointment.Application.UseCases
         {
             _patientRepository = iPatientRepository;
             _iAppointmentReporsitory = iAppointmentReporsitory;
-            _iMedicalSpecialitiesRepository = iMedicalSpecialitiesRepository;
+            _iMedicalSpecialtiesRepository = iMedicalSpecialtiesRepository;
             _outputHandler = outputHandler;
             _entityFactory = entityFactory;
             _unityOfWork = unityOfWork;
@@ -50,7 +50,7 @@ namespace GAP.Medical.Appointment.Application.UseCases
                 return;
             }
 
-            var medicalSpeciallity = await _iMedicalSpecialitiesRepository.Get(input._Appointment.MedicalSpecialityId);
+            var medicalSpeciallity = await _iMedicalSpecialtiesRepository.Get(input._Appointment.MedicalSpecialtyId);
 
             if (medicalSpeciallity == null) 
             {
@@ -67,7 +67,7 @@ namespace GAP.Medical.Appointment.Application.UseCases
             }
 
             var appoinment =  _entityFactory.NewAppointment(input._Appointment.PatientId
-                                        , input._Appointment.MedicalSpecialityId
+                                        , input._Appointment.MedicalSpecialtyId
                                         , input._Appointment.AssignedDate
                                         );
 

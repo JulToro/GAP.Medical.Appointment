@@ -9,18 +9,18 @@ namespace GAP.Medical.Appointment.Api.Models
     {
         public Guid Id { get; set; }
         public Guid PatientId { get; set; }
-        public Guid MedicalSpecialityId { get; set; }
+        public Guid MedicalSpecialtyId { get; set; }
         public DateTime AssignedDate { get; set; }
 
-        public MedicalSpecialityModel MedicalSpeciality { get; set; }
+        public MedicalSpecialtyModel MedicalSpecialty { get; set; }
 
-        public AppointmentModel(Guid id, Guid patientId, Guid medicalSpecialityId, DateTime assignedDate, MedicalSpecialityModel medicalSpeciality)
+        public AppointmentModel(Guid id, Guid patientId, Guid medicalSpecialtyId, DateTime assignedDate, MedicalSpecialtyModel medicalSpecialty)
         {
             Id = id;
             PatientId = patientId;
-            MedicalSpecialityId = medicalSpecialityId;
+            MedicalSpecialtyId = medicalSpecialtyId;
             AssignedDate = assignedDate;
-            MedicalSpeciality = medicalSpeciality;
+            MedicalSpecialty = medicalSpecialty;
         }
     }
 }

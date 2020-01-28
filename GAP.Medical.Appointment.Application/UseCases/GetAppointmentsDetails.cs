@@ -13,16 +13,16 @@
         private readonly IOutputHandler _outputHandler;
         private readonly IPatientRepository _patientRepository;
         private readonly IAppointmentReporsitory _iAppointmentReporsitory;
-        private readonly IMedicalSpecialitiesRepository _iMedicalSpecialitiesRepository;
+        private readonly IMedicalSpecialtiesRepository _iMedicalSpecialtiesRepository;
         public GetAppointmentsDetails(IPatientRepository iPatientRepository,
                                IAppointmentReporsitory iAppointmentReporsitory,
-                               IMedicalSpecialitiesRepository iMedicalSpecialitiesRepository,
+                               IMedicalSpecialtiesRepository iMedicalSpecialtiesRepository,
                                IOutputHandler outputHandler
                                )
         {
             _patientRepository = iPatientRepository;
             _iAppointmentReporsitory = iAppointmentReporsitory;
-            _iMedicalSpecialitiesRepository = iMedicalSpecialitiesRepository;
+            _iMedicalSpecialtiesRepository = iMedicalSpecialtiesRepository;
             _outputHandler = outputHandler;
         }
         public async Task Execute(Input input)
@@ -47,9 +47,9 @@
             foreach (var item in appointments) 
             {
                 var appointment = (Domain.Appointments.Appointment)item;
-                IMedicalSpeciality imedicalSpeciality = await _iMedicalSpecialitiesRepository.Get(appointment.MedicalSpecialityId);
+                IMedicalSpecialty imedicalSpecialty = await _iMedicalSpecialtiesRepository.Get(appointment.MedicalSpecialtyId);
 
-                Appointment appointmentOut = new Appointment(item, imedicalSpeciality);
+                Appointment appointmentOut = new Appointment(item, imedicalSpecialty);
                 appointmentsOut.Add(appointmentOut);
             }
             

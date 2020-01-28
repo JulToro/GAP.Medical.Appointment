@@ -9,24 +9,24 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class MedicalSpecialitiesRepository : IMedicalSpecialitiesRepository
+    public class MedicalSpecialtiesRepository : IMedicalSpecialtiesRepository
     {
         private readonly AppointmentContext _context;
-        public MedicalSpecialitiesRepository(AppointmentContext context)
+        public MedicalSpecialtiesRepository(AppointmentContext context)
         {
             _context = context ??
                 throw new ArgumentNullException(nameof(context));
         }
-        public async Task<IMedicalSpeciality> Get(Guid id)
+        public async Task<IMedicalSpecialty> Get(Guid id)
         {
-            var medicalSpecialities = await _context.MedicalSpecialities.Where(x => x.Id == id).Select(y => y).SingleOrDefaultAsync();
+            var medicalSpecialties = await _context.MedicalSpecialties.Where(x => x.Id == id).Select(y => y).SingleOrDefaultAsync();
 
-            return medicalSpecialities;
+            return medicalSpecialties;
         }
 
-        public async Task<IEnumerable<IMedicalSpeciality>> Get()
+        public async Task<IEnumerable<IMedicalSpecialty>> Get()
         {
-            var medicalSpecialities = await _context.MedicalSpecialities.Select(x=>x).ToListAsync();
+            var medicalSpecialities = await _context.MedicalSpecialties.Select(x=>x).ToListAsync();
             return medicalSpecialities;
         }
     }

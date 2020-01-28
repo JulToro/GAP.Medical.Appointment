@@ -9,6 +9,6 @@ namespace GAP.Medical.Appointment.Domain
     public interface IEntitiesFactory
     {
         IPatient NewPatient(string documentId, string name, string lastName, string phoneNumber, string email, string userName, string password, DateTime CreationDate, bool IsActive);
-        IAppointment NewAppointment(Guid patientId, Guid medicalSpecialityId, DateTime assignedDate);
+        IAppointment NewAppointment(Guid patientId, Guid medicalSpecialtyId, DateTime assignedDate);
     }
 }

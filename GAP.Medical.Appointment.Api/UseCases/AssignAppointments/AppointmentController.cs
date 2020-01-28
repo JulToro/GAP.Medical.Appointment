@@ -40,7 +40,7 @@
         [ProducesResponseType(400)]
         public async Task<ActionResult> Post([FromBody]RequirerAppoinment appointment)
         {
-            await _registerAppoinment.Execute(new Input(new Appointments.Appointment(appointment.PatientId,appointment.MedicalSpecialityId,appointment.AssignedDate)));
+            await _registerAppoinment.Execute(new Input(new Appointments.Appointment(appointment.PatientId,appointment.MedicalSpecialtyId,appointment.AssignedDate)));
             return Ok(_presenter.ViewModel);
 
         }

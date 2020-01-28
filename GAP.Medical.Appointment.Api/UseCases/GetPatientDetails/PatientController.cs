@@ -1,19 +1,14 @@
 namespace GAP.Medical.Appointment.Api.UseCases.GetPatientDetails
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using GAP.Medical.Appointment.Api.Models;
-    using GAP.Medical.Appointment.Api.UseCases.RegisterPatient;
     using GAP.Medical.Appointment.Application.Boundaries.GetPatientDetails;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Cors;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-
-
     /// <summary>
     /// Class Profile 
     /// </summary>

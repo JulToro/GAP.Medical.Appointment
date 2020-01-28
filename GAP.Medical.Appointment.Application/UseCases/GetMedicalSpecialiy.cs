@@ -3,32 +3,32 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpeciality;
+    using GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpecialty;
     using GAP.Medical.Appointment.Application.Repositories;
 
-    public class GetMedicalSpecialiy : IUseCase
+    public class GetMedicalSpecialty : IUseCase
     {
         private readonly IOutputHandler _outputHandler;
-        private readonly IMedicalSpecialitiesRepository _iMedicalSpecialitiesRepository;
-        public GetMedicalSpecialiy(
-                               IMedicalSpecialitiesRepository iMedicalSpecialitiesRepository,
+        private readonly IMedicalSpecialtiesRepository _iMedicalSpecialtiesRepository;
+        public GetMedicalSpecialty(
+                               IMedicalSpecialtiesRepository iMedicalSpecialtiesRepository,
                                IOutputHandler outputHandler
                                )
         {
-            _iMedicalSpecialitiesRepository = iMedicalSpecialitiesRepository;
+            _iMedicalSpecialtiesRepository = iMedicalSpecialtiesRepository;
             _outputHandler = outputHandler;
         }
         public async Task Execute()
         {
-            var medicalSpecialities = await _iMedicalSpecialitiesRepository.Get();
+            var medicalSpecialties = await _iMedicalSpecialtiesRepository.Get();
 
-            if (medicalSpecialities.Count() == 0) 
+            if (medicalSpecialties.Count() == 0) 
             {
-                _outputHandler.Error("List of medical specialities it's no found");
+                _outputHandler.Error("List of medical specialties it's no found");
                 return;
             }
 
-            Output output = new Output(medicalSpecialities);
+            Output output = new Output(medicalSpecialties);
 
             _outputHandler.Handle(output);
         }

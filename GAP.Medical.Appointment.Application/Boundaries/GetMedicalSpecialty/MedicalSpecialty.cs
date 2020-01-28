@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpeciality
+namespace GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpecialty
 {
-    public class MedicalSpeciality
+    public class MedicalSpecialty
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         
-        public MedicalSpeciality(Guid id, string name)
+        public MedicalSpecialty(Guid id, string name)
         {
             Id = id;
             Name = name;

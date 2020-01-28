@@ -10,19 +10,19 @@ namespace GAP.Medical.Appointment.Application.Boundaries.AsignAppoinments
     {
         public Guid Id { get; set; }
         public Guid PatientId { get; set; }
-        public Guid MedicalSpecialityId { get; set; }
+        public Guid MedicalSpecialtyId { get; set; }
         public DateTime AssignedDate { get; set; }
 
-        public MedicalSpeciality MedicalSpeciality { get; set; }
-        public Appointment(IAppointment patient, IMedicalSpeciality IMedicalSpeciality)
+        public MedicalSpecialty MedicalSpecialty { get; set; }
+        public Appointment(IAppointment patient, IMedicalSpecialty IMedicalSpecialty)
         {
             var Appointment = (Domain.Appointments.Appointment)patient;
 
             Id = Appointment.Id;
             PatientId = Appointment.PatientId;
-            MedicalSpecialityId = Appointment.MedicalSpecialityId;
+            MedicalSpecialtyId = Appointment.MedicalSpecialtyId;
             AssignedDate = Appointment.AssignedDate;
-            MedicalSpeciality = new MedicalSpeciality(IMedicalSpeciality);
+            MedicalSpecialty = new MedicalSpecialty(IMedicalSpecialty);
         }
     }
 }

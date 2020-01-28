@@ -1,12 +1,12 @@
 ﻿using GAP.Medical.Appointment.Api.Models;
-using GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpeciality;
+using GAP.Medical.Appointment.Application.Boundaries.GetMedicalSpecialty;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GAP.Medical.Appointment.Api.UseCases.GetMedicalSpecialities
+namespace GAP.Medical.Appointment.Api.UseCases.GetMedicalSpecialties
 {
     public class Presenter : IOutputHandler
     {
@@ -19,11 +19,11 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetMedicalSpecialities
 
         public void Handle(Output output)
         {
-            List<MedicalSpecialityModel> medicalSpecialities = new List<MedicalSpecialityModel>();
-            foreach (var item in output.MedicalSpecialities) 
+            List<MedicalSpecialtyModel> medicalSpecialities = new List<MedicalSpecialtyModel>();
+            foreach (var item in output.MedicalSpecialties) 
             {
 
-                MedicalSpecialityModel medialModel = new MedicalSpecialityModel(
+                MedicalSpecialtyModel medialModel = new MedicalSpecialtyModel(
                                            item.Id,
                                            item.Name
                                          );

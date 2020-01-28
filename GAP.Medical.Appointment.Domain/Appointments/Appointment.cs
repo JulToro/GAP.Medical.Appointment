@@ -10,17 +10,17 @@ namespace GAP.Medical.Appointment.Domain.Appointments
     {
         public Guid Id { get; set; }
         public Guid PatientId { get; set; }
-        public Guid MedicalSpecialityId { get; set; }
+        public Guid MedicalSpecialtyId { get; set; }
         public DateTime AssignedDate { get; set; }
 
         public virtual Patient Patient { get; set; }
-        public virtual MedicalSpeciality MedicalSpeciality { get; set; }
+        public virtual MedicalSpecialty MedicalSpecialty { get; set; }
 
-        public Appointment(Guid patientId, Guid medicalSpecialityId, DateTime assignedDate)
+        public Appointment(Guid patientId, Guid medicalSpecialtyId, DateTime assignedDate)
         {
             Id = Guid.NewGuid();
             PatientId = patientId;
-            MedicalSpecialityId = medicalSpecialityId;
+            MedicalSpecialtyId = medicalSpecialtyId;
             AssignedDate = assignedDate;
         }
 

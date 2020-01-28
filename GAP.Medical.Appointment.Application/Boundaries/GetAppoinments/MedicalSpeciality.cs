@@ -5,16 +5,16 @@ using System.Text;
 
 namespace GAP.Medical.Appointment.Application.Boundaries.GetAppoinments
 {
-    public class MedicalSpeciality
+    public class MedicalSpecialty
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
 
-        public MedicalSpeciality(IMedicalSpeciality _medicalSpeciality)
+        public MedicalSpecialty(IMedicalSpecialty _medicalSpecialty)
         {
-            var medicalSpeciality = (Domain.MedicaSpecialties.MedicalSpeciality)_medicalSpeciality;
-            Id = medicalSpeciality.Id;
-            Name = medicalSpeciality.Name;
+            var medicalSpecialty = (Domain.MedicaSpecialties.MedicalSpecialty)_medicalSpecialty;
+            Id = medicalSpecialty.Id;
+            Name = medicalSpecialty.Name;
         }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GAP.Medical.Appointment.Infrastructure.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    [Migration("20200127040642_SeedUser")]
-    partial class SeedUser
+    [Migration("20200128053415_InitialDb")]
+    partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                     b.Property<DateTime>("AssignedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("MedicalSpecialityId")
+                    b.Property<Guid>("MedicalSpecialtyId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PatientId")
@@ -38,14 +38,14 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MedicalSpecialityId");
+                    b.HasIndex("MedicalSpecialtyId");
 
                     b.HasIndex("PatientId");
 
                     b.ToTable("Appointment");
                 });
 
-            modelBuilder.Entity("GAP.Medical.Appointment.Domain.MedicaSpecialties.MedicalSpeciality", b =>
+            modelBuilder.Entity("GAP.Medical.Appointment.Domain.MedicaSpecialties.MedicalSpecialty", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,27 +57,27 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MedicalSpecialities");
+                    b.ToTable("MedicalSpecialties");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ad43a406-1c6e-4aaa-98e0-635d50a01525"),
+                            Id = new Guid("b56a0a81-7d1e-4ae6-ab97-34d66807c314"),
                             Name = "General medicine"
                         },
                         new
                         {
-                            Id = new Guid("e159d627-69c9-4dd6-ba3a-00e8eb8b2320"),
+                            Id = new Guid("f4ab8317-d992-4bf5-81e2-2e0b24d6c8f7"),
                             Name = "Odontology"
                         },
                         new
                         {
-                            Id = new Guid("8c1c6fc1-fdb5-4797-abdf-bbd5d7330de6"),
+                            Id = new Guid("f992b696-d234-45cb-a7be-9a86129289d7"),
                             Name = "Pediatrics"
                         },
                         new
                         {
-                            Id = new Guid("6c0fa8ea-a4d5-4e77-95aa-a2462296df58"),
+                            Id = new Guid("5b1f17f3-0e0e-4f09-82fd-21688472aead"),
                             Name = "Neurology"
                         });
                 });
@@ -135,8 +135,8 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8234096d-a811-454c-9e13-abaf4617400d"),
-                            CreationDate = new DateTime(2020, 1, 26, 23, 6, 42, 293, DateTimeKind.Local).AddTicks(5564),
+                            Id = new Guid("5d08a8eb-bc49-49b0-9a47-aadbb4ca94c1"),
+                            CreationDate = new DateTime(2020, 1, 28, 0, 34, 14, 773, DateTimeKind.Local).AddTicks(8369),
                             DocumentId = "1234",
                             Email = "juliantvi@gm.com",
                             IsActive = true,
@@ -150,14 +150,14 @@ namespace GAP.Medical.Appointment.Infrastructure.Migrations
 
             modelBuilder.Entity("GAP.Medical.Appointment.Domain.Appointments.Appointment", b =>
                 {
-                    b.HasOne("GAP.Medical.Appointment.Domain.MedicaSpecialties.MedicalSpeciality", "MedicalSpeciality")
-                        .WithMany("Apointments")
-                        .HasForeignKey("MedicalSpecialityId")
+                    b.HasOne("GAP.Medical.Appointment.Domain.MedicaSpecialties.MedicalSpecialty", "MedicalSpecialty")
+                        .WithMany("Appointments")
+                        .HasForeignKey("MedicalSpecialtyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("GAP.Medical.Appointment.Domain.Patients.Patient", "Patient")
-                        .WithMany("Apointments")
+                        .WithMany("Appointments")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

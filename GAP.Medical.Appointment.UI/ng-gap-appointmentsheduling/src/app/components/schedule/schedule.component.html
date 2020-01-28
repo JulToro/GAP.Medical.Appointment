@@ -1,9 +1,9 @@
 <main>
     <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit($event)">
       <fieldset>
-        <label for="medicalSpecialitys">Specialities:</label>
-        <select id="medicalSpecialitys" formControlName="medicalSpecialitys" (change)="loadData($event.target.value)">
-          <option *ngFor="let speciality of medicalSpecialitys" [value]="speciality.id">{{speciality.name}}</option>
+        <label for="medicalSpecialtys">Specialities:</label>
+        <select id="medicalSpecialtys" formControlName="medicalSpecialtys" (change)="loadData($event.target.value)">
+          <option *ngFor="let specialty of medicalSpecialtys" [value]="specialty.id">{{specialty.name}}</option>
         </select>
       </fieldset>
       <fieldset>
@@ -14,7 +14,7 @@
         <label for="time">Time:</label>
         <input type="time" formControlName="time" id="time">
       </fieldset>
-      {{scheduleForm.controls.medicalSpecialitys.value | json}}
+      {{scheduleForm.controls.medicalSpecialtys.value | json}}
       <button [disabled]="!scheduleForm.valid" type="submit">
         Schedule
       </button>

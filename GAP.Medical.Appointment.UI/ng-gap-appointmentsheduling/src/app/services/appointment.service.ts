@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 import { Observable } from "rxjs";
-import { MedicalSpecialityModel } from '../components/Models/medicalSpecialityModel';
+import { MedicalSpecialtyModel } from '../components/Models/medicalSpecialtyModel';
 
 
 @Injectable({
@@ -16,9 +17,8 @@ export class AppointmentService {
                                       .set("X-CustomHeader", "custom header value");;
 
     
-     return this.http.get<any>("https://localhost:44317/api/Appointment" + idUser, {headers})
+     return this.http.get<any>(environment.urlAppointment + idUser, {headers})
                    .subscribe((result:any)=>{
-
 
                    });
   }

@@ -8,7 +8,7 @@ namespace GAP.Medical.Appointment.Api.UseCases.AssignAppointments
     public class RequirerAppoinment
     {
         public Guid PatientId { get; set; }
-        public Guid MedicalSpecialityId { get; set; }
+        public Guid MedicalSpecialtyId { get; set; }
         public DateTime AssignedDate { get; set; }
     }
 }

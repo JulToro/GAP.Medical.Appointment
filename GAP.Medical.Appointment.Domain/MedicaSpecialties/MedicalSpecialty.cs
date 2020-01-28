@@ -4,13 +4,13 @@ using System.Text;
 
 namespace GAP.Medical.Appointment.Domain.MedicaSpecialties
 {
-    public class MedicalSpeciality : IMedicalSpeciality
+    public class MedicalSpecialty : IMedicalSpecialty
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Appointment.Domain.Appointments.Appointment> Apointments { get; set; }
+        public virtual ICollection<Appointment.Domain.Appointments.Appointment> Appointments { get; set; }
 
-        public MedicalSpeciality(string name)
+        public MedicalSpecialty(string name)
         {
             Id = Guid.NewGuid();
             Name = name;

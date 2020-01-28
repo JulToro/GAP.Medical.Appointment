@@ -24,16 +24,16 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetAppointmentsDetails
 
             foreach (var item in output.Appointments)
             {
-                MedicalSpecialityModel medialModel = new MedicalSpecialityModel(
-                                       item.MedicalSpeciality.Id,
-                                       item.MedicalSpeciality.Name
+                MedicalSpecialtyModel medialModel = new MedicalSpecialtyModel(
+                                       item.MedicalSpecialty.Id,
+                                       item.MedicalSpecialty.Name
                                      );
-                appointmens.Add(new AppointmentModel(item.Id, item.PatientId, item.MedicalSpecialityId, item.AssignedDate, medialModel));
+                appointmens.Add(new AppointmentModel(item.Id, item.PatientId, item.MedicalSpecialtyId, item.AssignedDate, medialModel));
             }
 
             PatientModel patientModel = new PatientModel(output.Patient.Id, output.Patient.DocumentId, output.Patient.Name, output.Patient.LastName, output.Patient.PhoneNumber, output.Patient.Email);
 
-            PatientApointmentModel newProfile = new PatientApointmentModel(patientModel,
+            PatientAppointmentModel newProfile = new PatientAppointmentModel(patientModel,
                                                                             appointmens  );
 
             ViewModel = new CreatedAtRouteResult("GetAppointment",

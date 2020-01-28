@@ -1,9 +1,8 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { AppointmentService } from 'src/app/services/appointment.service';
-import { debug } from 'util';
-import { MedicalSpecialityService } from 'src/app/services/medical-speciality.service';
-import { MedicalSpecialityModel } from '../Models/medicalSpecialityModel';
+
+import { MedicalSpecialtyService } from 'src/app/services/medical-specialty.service';
+import { MedicalSpecialtyModel } from '../Models/medicalSpecialtyModel';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
@@ -16,11 +15,11 @@ export class ScheduleComponent implements OnInit {
 
   public errorMessage: string;  
 
-  constructor(private formBuilder: FormBuilder, private medicalSpecialityService: MedicalSpecialityService) { }
+  constructor(private formBuilder: FormBuilder, private medicalSpecialtyService: MedicalSpecialtyService) { }
 
   ngOnInit() {
     this.scheduleForm = this.formBuilder.group({
-      medicalSpecialitys: ['', [Validators.required]],
+      medicalSpecialtys: ['', [Validators.required]],
       date: ['', [Validators.required]],
       time: ['', [Validators.required]]
     });
@@ -28,13 +27,13 @@ export class ScheduleComponent implements OnInit {
   }
   onSubmit() {}
   
-  public medicalSpecialitys: MedicalSpecialityModel[];
+  public medicalSpecialtys: MedicalSpecialtyModel[];
   getMedicineSpecialites()
   {   
     let token = sessionStorage.getItem('token');
-    this.medicalSpecialityService.getMedicalSpecialities(token).subscribe((res: any)=>
+    this.medicalSpecialtyService.getMedicalSpecialities(token).subscribe((res: any)=>
     {      
-      this.medicalSpecialitys = res.value;
+      this.medicalSpecialtys = res.value;
     }, error => this.errorMessage = <any>error);  
   }
 

@@ -15,7 +15,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
 import { AppointmentService } from './appointment.service';
 import { PatientService } from './services/patient.service';
 import { PatientApointmentService } from './services/patient-apointment.service';
-import { MedicalSpecialityService } from './services/medical-speciality.service';
+import { MedicalSpecialtyService } from './services/medical-specialty.service';
 import { LoginService } from './services/login.service';
 
 
@@ -36,7 +36,7 @@ import { LoginService } from './services/login.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AppointmentService,PatientService,PatientApointmentService,MedicalSpecialityService,LoginService],
+  providers: [AppointmentService,PatientService,PatientApointmentService,MedicalSpecialtyService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
