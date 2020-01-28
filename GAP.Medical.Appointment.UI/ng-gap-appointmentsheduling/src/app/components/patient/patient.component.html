@@ -1,17 +1,23 @@
 <main>
-    <section id="patient">
-        <label for="userName">{{this.patient?.name}}</label>
+
+    <section>
+        <i class="material-icons">
+            face
+        </i>{{this.patient?.name}} {{this.patient?.lastName}}
     </section>
-    <section id="patient">
-        <label for="userName">{{this.patient?.lastName}}</label>
+    <section>
+        <i class="material-icons">
+            featured_video
+        </i>{{this.patient?.documentId}}
     </section>
-    <section id="patient">
-        <label for="userName">{{this.patient?.documentId}}</label>
-    </section>
-    <section id="patient">
-        <label for="userName">{{this.patient?.phoneNumber}}</label>
-    </section>
-    <section id="patient">
-        <label for="userName">{{this.patient?.email}}</label>
-    </section>
+    <section>
+        <i class="material-icons">
+            call
+        </i>
+        {{this.patient?.phoneNumber}}</section>
+    <section>
+        <i class="material-icons">
+        email
+    </i>{{this.patient?.email}}
+</section>
 </main>

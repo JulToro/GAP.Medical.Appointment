@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
+  show = true;
   patient$: Observable<PatientModel>;
   errorMessage: string;
   constructor(private patientService: PatientService, private router: Router) { }
@@ -38,6 +38,10 @@ export class MainComponent implements OnInit {
       console.log(this.errorMessage);
       this.router.navigate(['login']);
     }));
+  }
+
+  toggle(){
+    this.show = !this.show;
   }
 
 }

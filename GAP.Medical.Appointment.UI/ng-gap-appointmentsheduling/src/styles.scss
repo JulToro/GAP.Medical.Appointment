@@ -1,14 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 body {
     margin: 0;
+    font-family: 'roboto';
 }
 
 fieldset{
     border: none;
     padding: 12px;
     label{
-        width: 80px;
-    }
-    input{
-        width: 80px;
+        margin-right: 12px;
     }
 }

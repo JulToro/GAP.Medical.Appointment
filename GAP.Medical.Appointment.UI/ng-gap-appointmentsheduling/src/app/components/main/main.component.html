@@ -1,4 +1,7 @@
 <main>
-    <app-menu [patient$]="patient$"></app-menu>
+    <i id="toggle" (click)="toggle()" class="material-icons">
+        menu
+    </i>
+    <app-menu [style.width]="show ? '40%' : '0'" [patient$]="patient$"></app-menu>
     <router-outlet></router-outlet>
 </main>

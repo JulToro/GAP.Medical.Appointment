@@ -1,7 +1,7 @@
 <aside>
     <section id="patient">
-        <img src="../assets/usuario.png" alt="">
-        <span>{{this.patient?.name}}</span>
+        <img src="../assets/usuario.png" alt="" (click)="goProfile()">
+    <span>{{patient?.name}} {{patient?.lastName}}</span>
     </section>
     <ul>
         <li><a routerLink="schedule" href="#">Schedule</a></li>

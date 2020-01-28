@@ -20,6 +20,7 @@ const routes: Routes = [
       { path: 'schedule', component: ScheduleComponent },   
       { path: 'patient', component: PatientComponent },
       { path: 'appointment', component: AppointmentComponent },
+      { path: 'profile', component: PatientComponent },
     ]
   },
   { path: '**', redirectTo: 'login' },

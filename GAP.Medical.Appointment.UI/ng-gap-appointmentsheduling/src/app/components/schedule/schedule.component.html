@@ -1,22 +1,23 @@
 <main>
-    <form [formGroup]="scheduleForm" (ngSubmit)="registerAppointment()">
-      <fieldset>
-        <label for="medicalSpecialtys">Specialities:</label>
-        <select id="medicalSpecialtys" formControlName="medicalSpecialtys" (change)="loadData($event.target.value)">
-          <option *ngFor="let specialty of medicalSpecialtys" [value]="specialty.id">{{specialty.name}}</option>
-        </select>
-      </fieldset>
-      <fieldset>
-        <label for="date">Select appointment date:</label>
-        <input type="date" formControlName="date" id="date">
-      </fieldset>
-      <fieldset>
-        <label for="time">Time:</label>
-        <input type="time" formControlName="time" id="time">
-      </fieldset>
-      {{scheduleForm.controls.medicalSpecialtys.value | json}}
-      <button [disabled]="!scheduleForm.valid" type="submit">
+  <form [formGroup]="scheduleForm" (ngSubmit)="registerAppointment()">
+    <fieldset>
+      <label for="medicalSpecialtys">Specialties:</label>
+      <select id="medicalSpecialtys" formControlName="medicalSpecialtys" (change)="loadData($event.target.value)">
+        <option *ngFor="let specialty of medicalSpecialtys" [value]="specialty.id">{{specialty.name}}</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <label for="date">Select appointment date:</label>
+      <input type="date" formControlName="date" id="date">
+    </fieldset>
+    <fieldset>
+      <label for="time">Time:</label>
+      <input type="time" formControlName="time" id="time">
+    </fieldset>
+    <fieldset><button [disabled]="!scheduleForm.valid" type="submit">
         Schedule
       </button>
-    </form>
-  </main>
+    </fieldset>
+
+  </form>
+</main>

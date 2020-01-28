@@ -1,12 +1,37 @@
+#toggle{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 main{
     display: flex;
-    width: 100%
+    width: 100%;
+    position: relative;
 }
 
 app-menu{
     width: 20%;
+    overflow: hidden;
 }
 
 ::ng-deep app-schedule{
     width: 80%;
+    padding: 20px;
 }
+
+::ng-deep app-appointment{
+    padding: 20px;
+}
+
+::ng-deep app-patient{
+    padding: 20px;
+}
+
+@media only screen and (max-width: 768px){
+    #toggle{
+        display: initial;
+    }
+}
+
