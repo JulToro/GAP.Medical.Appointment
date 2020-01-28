@@ -21,11 +21,6 @@ export class PatientComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getPatient("");
   }
   
-  getPatient(id:string)
-  {
-    var specialites  = this.patientService.getInfoPatient();
-  }
 }

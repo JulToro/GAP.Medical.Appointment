@@ -11,11 +11,8 @@ export class MedicalSpecialityService {
   constructor(private http: HttpClient) { }
 
 
-  getMedicalSpecialities(): Observable<MedicalSpecialityModel[]>
-  {
-    const headers = new HttpHeaders().set("X-CustomHeader", "custom header value")
-                                      .set("X-CustomHeader", "custom header value");
-
-     return this.http.get<MedicalSpecialityModel[]>("https://localhost:44317/api/MedicalSpeciality", {headers});
+  getMedicalSpecialities(token: string): Observable<MedicalSpecialityModel[]> {
+    const headers = new HttpHeaders().set("Authorization", `Bearer ${token}`);
+    return this.http.get<MedicalSpecialityModel[]>("https://localhost:44317/api/MedicalSpeciality", { headers });
   }
 }

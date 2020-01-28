@@ -22,10 +22,10 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetPatientDetails
             PatientModel newProfile = new PatientModel(
                 output.Id,
                 output.DocumentId,
-                output.LastName,
-                output.Email,
                 output.Name,
-                output.PhoneNumber
+                output.LastName,
+                output.PhoneNumber,
+                output.Email
             );
 
             ViewModel = new CreatedAtRouteResult("GetPatient",

@@ -27,12 +27,12 @@ export class ScheduleComponent implements OnInit {
     this.getMedicineSpecialites();
   }
   onSubmit() {}
-
-
+  
   public medicalSpecialitys: MedicalSpecialityModel[];
   getMedicineSpecialites()
-  {    
-    this.medicalSpecialityService.getMedicalSpecialities().subscribe((res: any)=>
+  {   
+    let token = sessionStorage.getItem('token');
+    this.medicalSpecialityService.getMedicalSpecialities(token).subscribe((res: any)=>
     {      
       this.medicalSpecialitys = res.value;
     }, error => this.errorMessage = <any>error);  

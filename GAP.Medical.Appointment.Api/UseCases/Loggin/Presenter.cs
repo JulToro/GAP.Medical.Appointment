@@ -27,7 +27,7 @@ namespace GAP.Medical.Appointment.Api.UseCases.Loggin
             JWToken jwtUser = new JWToken();
             string token = jwtUser.GenerateJWTToken(output.Patient, _configuration["Jwt:Key"], _configuration["Jwt:Issuer"]);
 
-            ViewModel = new CreatedAtRouteResult("GetToken",token);
+            ViewModel = new CreatedAtRouteResult("GetToken",new { Token=token, Id = output.Patient.Id });
         }
 
     }

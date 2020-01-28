@@ -1,5 +1,5 @@
 export interface LoginModel {
-    id: string;
-    UserName: string;    
-    Password : string;
+    userName: string;    
+    password : string;
 }       
+

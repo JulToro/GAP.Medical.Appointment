@@ -1,46 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { PatientModel } from '../Models/patientModel';
-import { LoginModel } from '../Models/LoginModel';
 import { PatientService } from 'src/app/services/patient.service';
-import { LoginService } from 'src/app/services/login.service';
+
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  singupForm: FormGroup;
-
-
-  public patientModel: PatientModel= {
-    id : "",
-    documentId :"",
-    name :"", 
-    lastName :"",
-    phoneNumber :"",
-    email :"",
-    userName :"",
-    password :"",
-  };
-  public loginModel: LoginModel;
-
-  public patientRegiser:PatientModel;
-
-  public documentId: string;
-  public name : string;
-  public lastName  : string;
-  public phoneNumber  : string;
-  public email  : string;
-  public userName  : string;
-  public password  : string;
-
-  constructor(private formBuilder: FormBuilder, private patientService: PatientService, private loginService: LoginService) { }
   
-  public errorMessage: string;  
-  
+  signupForm: FormGroup;
+
+  constructor(private formBuilder: FormBuilder, private patientService: PatientService, private router: Router) { }
+
+  errorMessage: string;
+
   ngOnInit() {
-    this.singupForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
       documentId: ['', [Validators.required]],
       name: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
@@ -50,33 +29,21 @@ export class SignupComponent implements OnInit {
       password: ['', [Validators.required]]
     });
   }
-  onSubmit() {
-    this.registerUser();
+
+  registerUser() {
+    let patient: PatientModel = {
+      documentId: this.signupForm.controls.documentId.value,
+      name: this.signupForm.controls.name.value,
+      lastName: this.signupForm.controls.lastName.value,
+      phoneNumber: this.signupForm.controls.phoneNumber.value,
+      email: this.signupForm.controls.email.value,
+      userName: this.signupForm.controls.userName.value,
+      password: this.signupForm.controls.password.value
+    }
+
+    this.patientService.registerPatient(patient).subscribe((res: any) => {
+      if (res.value)
+        this.router.navigate(['login']);
+    }, error => this.errorMessage = <any>error);;
   }
-
-  registerUser()
-  {
-    this.patientService.registerPatient(this.getPatient()).subscribe((res: any)=>
-    {          
-      this.patientRegiser = res.value;
-    }, error => this.errorMessage = <any>error);  ;
-  }
-
-  getPatient(){
-    debugger;  
-    this.patientModel.documentId =  this.singupForm.controls.documentId.value;
-    this.patientModel.name = this.singupForm.controls.name.value;
-    this.patientModel.lastName = this.singupForm.controls.lastName.value;
-    this.patientModel.phoneNumber = this.singupForm.controls.phoneNumber.value;
-    this.patientModel.email = this.singupForm.controls.email.value;
-    this.patientModel.userName = this.singupForm.controls.userName.value;
-    this.patientModel.password = this.singupForm.controls.password.value;
-
-      return this.patientModel;
-  }
-
-
-
-
-
 }
