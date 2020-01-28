@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { PatientService } from 'src/app/services/patient.service';
+import { PatientModel } from '../Models/patientModel';
+import { UUID } from 'angular2-uuid';
 
 @Component({
   selector: 'app-patient',
@@ -9,18 +10,18 @@ import { PatientService } from 'src/app/services/patient.service';
 })
 export class PatientComponent implements OnInit {
 
-  patientForm: FormGroup;
-
-  patient = [
-    { name: "General", id: 0 },
-    { name: "Odontology", id: 1 },
-    { name: "Brain", id: 2 }
-  ];
-
+  patient: PatientModel;
   constructor(private patientService: PatientService) { }
 
   ngOnInit() {
+    let patientId: UUID = sessionStorage.getItem('id');
+    let token: string = sessionStorage.getItem('token');
 
+    
+    this.patientService.getInfoPatient(patientId,token).subscribe(res=>{
+      if(res.value)
+        this.patient = res.value;
+    });
   }
   
 }

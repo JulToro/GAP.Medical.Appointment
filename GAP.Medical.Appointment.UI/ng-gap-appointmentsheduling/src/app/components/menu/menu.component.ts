@@ -20,4 +20,8 @@ export class MenuComponent implements OnInit {
     });
   }
 
+  logout(){
+    sessionStorage.clear();
+  }
+
 }

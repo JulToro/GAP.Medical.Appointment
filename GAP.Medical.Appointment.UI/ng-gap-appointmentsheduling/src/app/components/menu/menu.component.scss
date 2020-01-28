@@ -1,4 +1,21 @@
+#patient{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 20%;
+    }
+}
+
 aside{
     display:flex;
     flex-direction: column;
+    height: 100vh;
+    background-color: darkcyan;
+    padding: 20px 8px;
+    ul{
+        list-style: none;
+        padding: 0;
+    }
 }

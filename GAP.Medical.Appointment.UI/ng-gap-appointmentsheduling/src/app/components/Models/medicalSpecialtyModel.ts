@@ -1,4 +1,5 @@
+import { UUID } from 'angular2-uuid';
 export interface MedicalSpecialtyModel {
-    id: string;
-    name: string;
-}
+    id: UUID;    
+    name : string;
+}     

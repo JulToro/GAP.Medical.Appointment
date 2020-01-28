@@ -1,5 +1,5 @@
 <main>
-    <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit($event)">
+    <form [formGroup]="scheduleForm" (ngSubmit)="registerAppointment()">
       <fieldset>
         <label for="medicalSpecialtys">Specialities:</label>
         <select id="medicalSpecialtys" formControlName="medicalSpecialtys" (change)="loadData($event.target.value)">

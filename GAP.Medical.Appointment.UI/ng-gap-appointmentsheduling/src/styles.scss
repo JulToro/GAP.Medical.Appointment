@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+}
+
+fieldset{
+    border: none;
+    padding: 12px;
+    label{
+        width: 80px;
+    }
+    input{
+        width: 80px;
+    }
+}

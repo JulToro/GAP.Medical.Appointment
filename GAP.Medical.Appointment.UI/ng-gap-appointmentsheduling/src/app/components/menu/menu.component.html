@@ -1,11 +1,11 @@
 <aside>
     <section id="patient">
-        <img src="Images\usuario.png" alt="">
-        <label for="userName">{{this.patient?.name}}</label>
+        <img src="../assets/usuario.png" alt="">
+        <span>{{this.patient?.name}}</span>
     </section>
     <ul>
-        <li><a href="#">Shedule</a></li>
-        <li><a href="#">Appointment</a></li>        
-        <li><a href="#">Log out</a></li>
+        <li><a routerLink="schedule" href="#">Schedule</a></li>
+        <li><a routerLink="appointment" href="#">Appointment</a></li>    
+        <li><a (click)="logout()" href="#">Log out</a></li>
     </ul>
 </aside>

@@ -4,9 +4,9 @@ main{
 }
 
 app-menu{
-    flex: 1 1 1;
+    width: 20%;
 }
 
-::ng-deep app-shedule{
-    flex: 3 1 0
+::ng-deep app-schedule{
+    width: 80%;
 }

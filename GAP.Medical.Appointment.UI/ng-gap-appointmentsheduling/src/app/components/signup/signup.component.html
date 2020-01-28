@@ -6,19 +6,19 @@
             </fieldset>
             <fieldset>
                 <label for="text">First Name:</label>
-                <input type="text" formControlName="name" maxlength="40" id="name">
+                <input type="text" formControlName="name" id="name">
               </fieldset>
               <fieldset>
                 <label for="text">Last Name:</label>
-                <input type="text" formControlName="lastName" maxlength="40" id="lastName">
+                <input type="text" formControlName="lastName" id="lastName">
               </fieldset>
               <fieldset>
                 <label for="tel">Phone Number:</label>
-                <input type="tel" formControlName="phoneNumber" maxlength="20" id="phoneNumber">
+                <input type="tel" formControlName="phoneNumber" id="phoneNumber">
               </fieldset>
               <fieldset>
                 <label for="email">Email: </label>
-                <input type="email" formControlName="email" id="email">
+                <input formControlName="email" id="email">
               </fieldset>
               <fieldset>
                 <label for="text">User Name: </label>
@@ -30,7 +30,8 @@
               </fieldset>
                <button type="submit">
                 Register
-              </button>            
+              </button>           
+              <a routerLink="/login">Back</a> 
         </form>
 </main>
 

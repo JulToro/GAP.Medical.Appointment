@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   urlAppointment:'https://localhost:44317/api/Appointment',
   urlLogin:'https://localhost:44317/api/Login',
-  urlMedicalSpecialty:'https://localhost:44317/api/MedicalSpecialty'
-
+  urlMedicalSpecialty:'https://localhost:44317/api/MedicalSpecialty',
+  urlPatient : 'https://localhost:44317/api/Patient'
 };
 
 /*

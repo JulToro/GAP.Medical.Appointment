@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       if (res.value) {
         let loginResponse: LoginResponseModel = res.value;
         sessionStorage.setItem('token', loginResponse.token);
-        sessionStorage.setItem('id', loginResponse.id);
+        sessionStorage.setItem('id', loginResponse.id.toString());
         this.router.navigate(['main/schedule']);
       }
     },

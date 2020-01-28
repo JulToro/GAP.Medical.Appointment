@@ -1,6 +1,6 @@
-
+import { UUID } from 'angular2-uuid';
 export interface PatientModel {
-    id?: string;
+    id?: UUID;
     documentId: string;
     name: string;
     lastName: string;

@@ -21,10 +21,10 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
       documentId: ['', [Validators.required]],
-      name: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.maxLength(40)]],
+      lastName: ['', [Validators.required, Validators.maxLength(40)]],
+      phoneNumber: ['', [Validators.required, Validators.maxLength(20)]],
+      email: ['', [Validators.required, Validators.email]],
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });

@@ -1,9 +1,10 @@
+import { UUID } from 'angular2-uuid';
 import { MedicalSpecialtyModel } from './medicalSpecialtyModel';
 
 export interface AppointmentModel {
-    id: string;
-    PatientId: string;    
-    AssignedDate: string;
-    MedicalSpecialtyId: string;
-    MedicalSpecialty: MedicalSpecialtyModel;
+    id?: UUID;
+    patientId: string;    
+    assignedDate: string;
+    medicalSpecialtyId: UUID;
+    medicalSpecialty?: MedicalSpecialtyModel;
 }       
