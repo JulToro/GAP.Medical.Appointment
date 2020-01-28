@@ -1,26 +1,32 @@
-<ng-container *ngFor="let appointment of appointments?.appointments; let i=index;">
-    <table>
-        <tr>
-            <th>
-                Specialty
-            </th>
-            <th>
-                Appointment date
-            </th>
-            <th>
-                Actions
-            </th>
-        </tr>
-        <tr>
-            <td>
-                {{appointment.medicalSpecialty.name}}
-            </td>
-            <td>
-                {{appointment.assignedDate}}
-            </td>
-            <td>
-                &#x2612;
-            </td>
-        </tr>
-    </table>
-</ng-container>
+<main>
+        <ng-container >
+            <table>
+                <tr>
+                    <th>
+                        Specialty
+                    </th>
+                    <th>
+                        Appointment date
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+                <tr *ngFor="let appointment of appointments?.appointments; let i=index;">
+                    <td>
+                        {{appointment.medicalSpecialty.name}}
+                    </td>
+                    <td>
+                        {{appointment.assignedDate}}
+                    </td>
+                    <td>
+                        <button (click)="cancel(appointment.id)">
+                            <i class="material-icons">
+                                cancel
+                             </i>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </ng-container>
+</main>

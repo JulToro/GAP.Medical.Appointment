@@ -12,7 +12,7 @@ namespace GAP.Medical.Appointment.Api.UseCases.CancelAppointments
         public IActionResult ViewModel { get; private set; }
         public void Error(string message)
         {
-            ViewModel = new NoContentResult();
+            ViewModel = new BadRequestObjectResult(new { message = $"{message}:", currentDate = DateTime.Now });
         }
 
         public void Handle(Output output)

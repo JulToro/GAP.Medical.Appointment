@@ -7,5 +7,7 @@ namespace GAP.Medical.Appointment.Domain.Appointments
     public interface IAppointment: IAggregateRoot
     {
         bool ValidateAvailabilityDate(IEnumerable<IAppointment> apointmets);
+
+        bool ValidateCancelation();
     }
 }

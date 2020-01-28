@@ -58,7 +58,7 @@ namespace GAP.Medical.Appointment.Application.UseCases
                 return;
             }
 
-            IEnumerable<IAppointment> assignedAppoinments = await _iAppointmentReporsitory.Get(input._Appointment.PatientId);
+            IEnumerable<IAppointment> assignedAppoinments = await _iAppointmentReporsitory.GetbyPatientId(input._Appointment.PatientId);
 
             if (!input._Appointment.ValidateAvailabilityDate(assignedAppoinments)) 
             {

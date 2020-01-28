@@ -3,13 +3,15 @@
     using GAP.Medical.Appointment.Api.Models;
     using GAP.Medical.Appointment.Application.Boundaries.RegisterPatient;
     using Microsoft.AspNetCore.Mvc;
+    using System;
+
     public  class Presenter : IOutputHandler
     {
         public IActionResult ViewModel { get; private set; }
 
         public void Error(string message)
         {
-            ViewModel = new NoContentResult();
+            ViewModel = new BadRequestObjectResult(new { message = $"{message}:", currentDate = DateTime.Now });
         }
 
         public void Handle(Output output)

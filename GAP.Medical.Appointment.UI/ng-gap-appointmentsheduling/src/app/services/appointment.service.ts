@@ -28,7 +28,7 @@ export class AppointmentService {
     return this.http.post<any>(environment.urlAppointment, body, { headers });
   }
 
-  deleteAppointment(token: string, idAppointment: string): Observable<any> {
+  deleteAppointment(token: string, idAppointment: UUID): Observable<any> {
     const body = idAppointment;
     const headers = new HttpHeaders().set("Content-Type", "application/json")
       .set("Authorization", `Bearer ${token}`);;

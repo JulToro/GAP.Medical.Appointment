@@ -47,7 +47,7 @@ namespace GAP.Medical.Appointment.Domain.Appointments
 
         private bool ValidateDate()
         {
-            if (AssignedDate > DateTime.Now)
+            if (AssignedDate >= DateTime.Now)
             {
                 return true;
             }

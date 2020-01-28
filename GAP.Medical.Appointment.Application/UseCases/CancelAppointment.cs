@@ -37,6 +37,13 @@ namespace GAP.Medical.Appointment.Application.UseCases
                 return;
             }
 
+            if (!appointment.ToList().FirstOrDefault().ValidateCancelation())
+            {
+                _outputHandler.Error("The appointment cannot be canceled");
+                return;
+            }
+
+
             await _iAppointmentReporsitory.Delete(appointment.FirstOrDefault());
             await _unityOfWork.Save();
 

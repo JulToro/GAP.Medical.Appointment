@@ -14,7 +14,7 @@ namespace GAP.Medical.Appointment.Api.UseCases.GetAppointmentsDetails
 
         public void Error(string message)
         {
-            ViewModel = new NoContentResult();
+            ViewModel = new BadRequestObjectResult(new { message = $"{message}:", currentDate = DateTime.Now });
         }
 
         public void Handle(Output output)
