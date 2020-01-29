@@ -30,6 +30,28 @@ namespace GAP.Medical.Appointment.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<bool> FindDocumentId(string documentId)
+        {
+            var Patient = await _context.Patients.Where(x => x.DocumentId == documentId ).Select(y => y).SingleOrDefaultAsync();
+
+            if (Patient != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> FindUserName(string userName)
+        {
+            var Patient = await _context.Patients.Where(x => x.Username == userName).Select(y => y).SingleOrDefaultAsync();
+
+            if (Patient != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public async Task<IPatient> Get(Guid id)
         {
             var Patient = await _context.Patients.Where(x =>x.Id == id).Select(y => y).SingleOrDefaultAsync();

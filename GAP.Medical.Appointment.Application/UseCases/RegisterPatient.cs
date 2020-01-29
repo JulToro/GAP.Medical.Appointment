@@ -36,24 +36,50 @@ namespace GAP.Medical.Appointment.Application.UseCases
                 return;
             }
 
+            if (await _patientRepository.FindDocumentId(input.Patient.DocumentId))
+            {
+                _outputHandler.Error("DocumentId has already registered.");
+                return;
+            }
+            if (await _patientRepository.FindUserName(input.Patient.Username))
+            {
+                _outputHandler.Error("UserName has already registered.");
+                return;
+            }
 
+            try
+            {
+               
 
-            var patient = _entityFactory.NewPatient(input.Patient.DocumentId
-                                                    , input.Patient.Name
-                                                    , input.Patient.LastName
-                                                    , input.Patient.PhoneNumber
-                                                    , input.Patient.Email
-                                                    , input.Patient.Username
-                                                    , input.Patient.Password
-                                                    , new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)
-                                                    , true
-                                                    );
+                var patient = _entityFactory.NewPatient(input.Patient.DocumentId
+                                                            , input.Patient.Name
+                                                            , input.Patient.LastName
+                                                            , input.Patient.PhoneNumber
+                                                            , input.Patient.Email
+                                                            , input.Patient.Username
+                                                            , input.Patient.Password
+                                                            , new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)
+                                                            , true
+                                                            );
+                string validate = patient.Validate();
+                if (!string.IsNullOrEmpty(validate)) 
+                {
+                    _outputHandler.Error(validate); return;
+                }
 
-            await _patientRepository.Add(patient);
-            await _unityOfWork.Save();
-            Output output = new Output(patient);
+                await _patientRepository.Add(patient);
+                await _unityOfWork.Save();
+                Output output = new Output(patient); 
+                _outputHandler.Handle(output);
+            }
+            catch (Exception)
+            {
+                _outputHandler.Error("An rror ocurred when try to insert new register.");
+                return;
+            }
+           
 
-            _outputHandler.Handle(output);
+            
         }
     }
 }

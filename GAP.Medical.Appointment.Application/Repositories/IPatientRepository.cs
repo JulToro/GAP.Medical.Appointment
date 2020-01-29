@@ -8,6 +8,8 @@ namespace GAP.Medical.Appointment.Application.Repositories
 {
     public interface IPatientRepository
     {
+        Task<bool> FindDocumentId(string documentId);
+        Task<bool> FindUserName(string userName);
         Task<IPatient> Get(string user, string password);
         Task<IPatient> Get(Guid id);
         Task Add(IPatient patient);

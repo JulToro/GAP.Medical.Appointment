@@ -34,7 +34,10 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.controls.password.value
     }
     this.loginService.login(patient).subscribe((res: any) => {
-      if (res.value) {
+      debugger;
+      if(res.statusCode==400){
+        console.log(JSON.stringify(res.value));
+      } else if (res.value) {
         let loginResponse: LoginResponseModel = res.value;
         sessionStorage.setItem('token', loginResponse.token);
         sessionStorage.setItem('id', loginResponse.id.toString());

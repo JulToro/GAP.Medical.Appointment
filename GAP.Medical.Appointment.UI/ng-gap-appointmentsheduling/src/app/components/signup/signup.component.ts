@@ -50,7 +50,9 @@ export class SignupComponent implements OnInit {
       }
 
       this.patientService.registerPatient(patient).subscribe((res: any) => {
-        if (res.value)
+        if(res.statusCode==400){
+          console.log(JSON.stringify(res.value));
+        } else if(res.value)
           this.router.navigate(['login']);
       }, error => this.errorMessage = <any>error);;
     } else {

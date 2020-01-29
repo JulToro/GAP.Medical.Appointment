@@ -9,7 +9,7 @@
           account_box
         </i>
         <input type="text" formControlName="userName" id="userName" placeholder="User name" value=" ">
-        <ul class="alert-danger" *ngIf="form.userName.invalid && (form.userName.dirty || form.userName.touched)" >
+        <ul class="alert-danger" *ngIf="form.userName.invalid && (form.userName.dirty || form.userName.touched)">
           <li class="container-error-message" *ngIf="form.userName.errors.required">
             User Name is required
           </li>
@@ -23,14 +23,15 @@
           lock
         </i>
         <input type="password" formControlName="password" id="password" placeholder="Password" value=" ">
-        <ul class="alert-danger" *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)" >
+        <ul class="alert-danger" *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)">
           <li class="container-error-message" *ngIf="form.password.errors.required">
             Password is required
           </li>
           <li class="container-error-message" *ngIf="form.password.errors.maxlength">
             Password least 10 characters long.
           </li>
-        </ul>      </div>
+        </ul>
+      </div>
       <button type="submit" [disabled]="!loginForm.valid" class="btn">
         Login
       </button>

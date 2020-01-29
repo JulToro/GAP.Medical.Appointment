@@ -47,16 +47,39 @@ namespace GAP.Medical.Appointment.Domain.Patients
             IsActive = isActive;
         }
 
-        public void RegisterAppoinment(Guid appointmentId)
+        public string Validate()
         {
-            //   _appoinments.Add(appointmentId);
+            if (String.IsNullOrEmpty(DocumentId))
+            {
+                return "DocumentId is not valid";
+            }
+            if (String.IsNullOrEmpty(Name))
+            {
+                return "Name is not valid";
+            }
+            if (String.IsNullOrEmpty(LastName))
+            {
+                return "LastName is not valid";
+            }
+            if (String.IsNullOrEmpty(PhoneNumber))
+            {
+                return "PhoneNumber is not valid";
+            }
+            if (String.IsNullOrEmpty(Email))
+            {
+                return "Email is not valid";
+            }
+            if (String.IsNullOrEmpty(Username))
+            {
+                return "Username is not valid";
+            }
+            if (String.IsNullOrEmpty(Password))
+            {
+                return "Password is not valid";
+            }
+            return "";
         }
 
-        public void LoadAppoinments(ICollection<Guid> appoinmentIds)
-        {
-            // _appoinments = new AppointmentsCollection();
-            // foreach (var account in appoinmentIds)
-            //   _appoinments.Add(account);
-        }
+
     }
 }
