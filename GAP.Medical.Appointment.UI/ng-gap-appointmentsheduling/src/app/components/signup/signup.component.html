@@ -1,37 +1,111 @@
 <main>
-        <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
-            <fieldset>
-                <label for="text">Identification:</label>
-                <input type="text" formControlName="documentId" id="documentId">
-            </fieldset>
-            <fieldset>
-                <label for="text">First Name:</label>
-                <input type="text" formControlName="name" id="name">
-              </fieldset>
-              <fieldset>
-                <label for="text">Last Name:</label>
-                <input type="text" formControlName="lastName" id="lastName">
-              </fieldset>
-              <fieldset>
-                <label for="tel">Phone Number:</label>
-                <input type="tel" formControlName="phoneNumber" id="phoneNumber">
-              </fieldset>
-              <fieldset>
-                <label for="email">Email: </label>
-                <input formControlName="email" id="email">
-              </fieldset>
-              <fieldset>
-                <label for="text">User Name: </label>
-                <input type="text" formControlName="userName" id="userName">
-              </fieldset>
-              <fieldset>
-                <label for="password">Password: </label>
-                <input type="password" formControlName="password" id="password">
-              </fieldset>
-               <button type="submit">
-                Register
-              </button>           
-              <a routerLink="/login">Back</a> 
-        </form>
+  <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
+    <div class="register-box">
+      <div class="input-fields">
+        <fieldset class="textbox">
+          <input type="text" class="input" formControlName="documentId" id="documentId"
+            placeholder="Identification Card" value=" ">
+        </fieldset>
+        <ul class="alert-danger" *ngIf="form.documentId.invalid && (form.documentId.dirty || form.documentId.touched)" >
+          <li class="container-error-message" *ngIf="form.documentId.errors.required">
+            Identification card is required
+          </li>
+          <li class="container-error-message" *ngIf="form.documentId.errors.maxlength">
+            Identification card least 25 characters long.
+          </li>
+          <li class="container-error-message" *ngIf="form.documentId.errors.pattern">
+            Invalid characters.
+          </li>
+        </ul>
+        <fieldset class="textbox">
+          <input type="text" class="input" formControlName="name" id="name" placeholder="Name" value=" ">
+        </fieldset>
+        <ul class="alert-danger" *ngIf="form.name.invalid && (form.name.dirty || form.name.touched)" >
+          <li class="container-error-message" *ngIf="form.name.errors.required">
+            Name is required
+          </li>
+          <li class="container-error-message" *ngIf="form.name.errors.maxlength">
+            Name least 20 characters long.
+          </li>
+          <li class="container-error-message" *ngIf="form.name.errors.pattern">
+            Invalid characters.
+          </li>
+        </ul>
+        <fieldset class="textbox">
+          <input type="text" class="input" formControlName="lastName" id="lastName" placeholder="Last Name" value=" ">
+        </fieldset>
+        <ul class="alert-danger" *ngIf="form.lastName.invalid && (form.lastName.dirty || form.lastName.touched)" >
+          <li class="container-error-message" *ngIf="form.lastName.errors.required">
+            Lastname is required
+          </li>
+          <li class="container-error-message" *ngIf="form.lastName.errors.maxlength">
+            Lastname card least 20 characters long.
+          </li>
+          <li class="container-error-message" *ngIf="form.lastName.errors.pattern">
+            Invalid characters.
+          </li>
+        </ul>
+        <fieldset class="textbox">
+          <input type="tel" class="input" formControlName="phoneNumber" id="phoneNumber" placeholder="Phone Number"
+            value=" ">
+        </fieldset>
+        <ul class="alert-danger" *ngIf="form.phoneNumber.invalid && (form.phoneNumber.dirty || form.phoneNumber.touched)" >
+          <li class="container-error-message" *ngIf="form.phoneNumber.errors.required">
+            Phonenumber is required
+          </li>
+          <li class="container-error-message" *ngIf="form.phoneNumber.errors.maxlength">
+            Phonenumber least 15 characters long.
+          </li>
+          <li class="container-error-message" *ngIf="form.phoneNumber.errors.pattern">
+            Invalid characters.
+          </li>
+        </ul>
+        <fieldset class="textbox">
+          <input formControlName="email" class="input" id="email" placeholder="Email" value=" ">
+        </fieldset>
+        <ul class="alert-danger" *ngIf="form.email.invalid && (form.email.dirty || form.email.touched)" >
+          <li class="container-error-message" *ngIf="form.email.errors.required">
+            Email is required
+          </li>
+          <li class="container-error-message" *ngIf="form.email.errors.maxlength">
+            Email card least 30 characters long.
+          </li>
+          <li class="container-error-message" *ngIf="form.email.errors.pattern">
+            Invalid characters.
+          </li>
+        </ul>
+        <fieldset class="textbox">
+          <input type="text" class="input" formControlName="userName" id="userName" placeholder="User Name" value=" ">
+        </fieldset>
+        <ul class="alert-danger" *ngIf="form.userName.invalid && (form.userName.dirty || form.userName.touched)" >
+          <li class="container-error-message" *ngIf="form.userName.errors.required">
+            User name is required
+          </li>
+          <li class="container-error-message" *ngIf="form.userName.errors.maxlength">
+            User name least 20 characters long.
+          </li>
+          <li class="container-error-message" *ngIf="form.userName.errors.pattern">
+            Invalid characters.
+          </li>
+        </ul>
+        <fieldset class="textbox">
+          <input type="password" class="input" formControlName="password" id="password" placeholder="Password"
+            value=" ">
+        </fieldset>
+        <ul class="alert-danger" *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)" >
+          <li class="container-error-message" *ngIf="form.password.errors.required">
+            Password is required
+          </li>
+          <li class="container-error-message" *ngIf="form.password.errors.maxlength">
+            Password least 20 characters long.
+          </li>
+        </ul>
+        <button type="submit" [disabled]="!signupForm.valid" class="btn">
+          Register
+        </button>
+        <a routerLink="/login">
+          <i class="material-icons">arrow_back </i> </a>
+      </div>
+    </div>
+  </form>
 </main>
-

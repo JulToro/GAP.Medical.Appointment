@@ -1,0 +1,83 @@
+main{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    width: 100%;
+    padding: 0 20px;
+
+}
+
+.register-box{
+    margin: 0 auto;
+    background: rgba(182, 223, 240, 0.8);    
+    max-width: 550px;
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    box-shadow: 0 0 10px;
+    flex-direction: column;
+    
+}
+
+.textbox{
+    width: 100%;
+    overflow: hidden;
+    font-size: 20;
+    padding: 8px 0;
+    margin: 80px, 0;
+    border-bottom: 1px solid darkblue;
+    display: flex;
+}
+.textbox i{    
+    width: 26px;
+    float: left;
+    text-align: center;
+}
+.textbox input{
+    display: flex;    
+    margin-right: 4%;
+}
+
+
+
+.textbox input {
+    border: none;
+    outline: none;
+    background: none;
+    color: darkblue;
+    font-size: 18px;
+    width: 80%;
+    float: left;
+    margin: 0 10px;
+    flex-direction: column;
+}
+.btn{
+    width: 100%;
+    background: deepskyblue;
+    border: 2px solid deepskyblue;    
+    color: black;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 4px;
+    &:hover{
+        background-color: mediumturquoise;
+    }    
+}
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  &:hover{
+    background-color: #cccccc;
+}  
+}
+
+.alert-danger{
+    color: red;
+    margin: 5px;
+}
+.container-error-message{
+    padding: 3px;
+}

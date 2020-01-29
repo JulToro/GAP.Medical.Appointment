@@ -1,18 +1,42 @@
 <main>
   <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <fieldset>
-      <label for="text">User Name: </label>
-      <input type="text" formControlName="userName" id="userName">
-    </fieldset>
-    <fieldset>
-      <label for="password">Password: </label>
-      <input type="password" formControlName="password" id="password">
-    </fieldset>
-    <button type="submit">
-      Login
-    </button>
-    <a routerLink="/signup">
-      Register
-    </a>
+    <div class="login-box">
+      <div class="image">
+        <img src="./assets/Logo.png" alt="">
+      </div>
+      <div class="textbox">
+        <i class="material-icons">
+          account_box
+        </i>
+        <input type="text" formControlName="userName" id="userName" placeholder="User name" value=" ">
+        <ul class="alert-danger" *ngIf="form.userName.invalid && (form.userName.dirty || form.userName.touched)" >
+          <li class="container-error-message" *ngIf="form.userName.errors.required">
+            User Name is required
+          </li>
+          <li class="container-error-message" *ngIf="form.userName.errors.maxlength">
+            User Name least 10 characters long.
+          </li>
+        </ul>
+      </div>
+      <div class="textbox">
+        <i class="material-icons">
+          lock
+        </i>
+        <input type="password" formControlName="password" id="password" placeholder="Password" value=" ">
+        <ul class="alert-danger" *ngIf="form.password.invalid && (form.password.dirty || form.password.touched)" >
+          <li class="container-error-message" *ngIf="form.password.errors.required">
+            Password is required
+          </li>
+          <li class="container-error-message" *ngIf="form.password.errors.maxlength">
+            Password least 10 characters long.
+          </li>
+        </ul>      </div>
+      <button type="submit" [disabled]="!loginForm.valid" class="btn">
+        Login
+      </button>
+      <a routerLink="/signup">
+        New User?
+      </a>
+    </div>
   </form>
 </main>

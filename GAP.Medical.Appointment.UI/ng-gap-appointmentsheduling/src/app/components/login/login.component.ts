@@ -19,11 +19,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      userName: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      userName: ['', [Validators.required,Validators.maxLength(20)]],
+      password: ['', [Validators.required,Validators.maxLength(20)]]
     });
   }
 
+  get form() {
+    return this.loginForm.controls;
+  }
+  
   login() {
     let patient: LoginModel = {
       userName: this.loginForm.controls.userName.value,
