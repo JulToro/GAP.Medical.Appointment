@@ -22,9 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GAP.Medical.Appointment.Api
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GAP.Medical.Appointment.Security", "GAP.Medical.Appointment.Security\GAP.Medical.Appointment.Security.csproj", "{F3A806B6-32DA-4720-9C6B-2334B91B36D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAP.Medical.Appointment.AcceptaceTest", "GAP.Medical.Appointment.AcceptaceTest\GAP.Medical.Appointment.AcceptaceTest.csproj", "{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GAP.Medical.Appointment.AcceptaceTest", "GAP.Medical.Appointment.AcceptaceTest\GAP.Medical.Appointment.AcceptaceTest.csproj", "{CC4BCFAD-7CF6-44AC-B508-F324C8C00808}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAP.MedicalAppointment.IntegrationTest", "GAP.MedicalAppointment.IntegrationTest\GAP.MedicalAppointment.IntegrationTest.csproj", "{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GAP.MedicalAppointment.IntegrationTest", "GAP.MedicalAppointment.IntegrationTest\GAP.MedicalAppointment.IntegrationTest.csproj", "{CD623A91-B1D0-4FE1-9EA2-515F0751F3C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

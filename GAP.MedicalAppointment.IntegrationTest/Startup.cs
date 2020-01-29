@@ -1,21 +1,16 @@
-using System;
-using System.Text;
 using GAP.Medical.Appointment.Application.Repositories;
 using GAP.Medical.Appointment.Application.Services;
 using GAP.Medical.Appointment.Domain;
 using GAP.Medical.Appointment.Infrastructure.EntityFrameworkDataAccess;
 using GAP.Medical.Appointment.Infrastructure.Repositories;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+using NUnit.Framework;
 
-namespace GAP.Medical.Appointment.Api
+namespace GAP.MedicalAppointment.IntegrationTest
 {
     public class Startup
     {
@@ -32,10 +27,8 @@ namespace GAP.Medical.Appointment.Api
             services.AddControllers();
 
 
-            AddSwagger(services);
             AddAppoinmentCore(services);
             AddSQLPersistence(services);
-            AddJWT(services);
 
             services.AddCors(options =>
             {
@@ -55,10 +48,6 @@ namespace GAP.Medical.Appointment.Api
         {
             app.UseRouting();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
 
             app.UseCors(x => x
                 .AllowAnyOrigin()
@@ -66,7 +55,7 @@ namespace GAP.Medical.Appointment.Api
                 .AllowAnyHeader());
             app.UseCors("MyPolicy");
 
-           // app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -75,7 +64,6 @@ namespace GAP.Medical.Appointment.Api
                 endpoints.MapControllers();
             });
 
-            UseSwagger(app);
         }
 
         private void AddSQLPersistence(IServiceCollection services)
@@ -115,58 +103,6 @@ namespace GAP.Medical.Appointment.Api
             services.AddScoped<GAP.Medical.Appointment.Application.Boundaries.Login.IUseCase, GAP.Medical.Appointment.Application.UseCases.Login>();
         }
 
-        private void AddJWT(IServiceCollection services)
-        {
-            string clave1 = Configuration["Jwt:Key"];
-            string clave2 = Configuration["Jwt:Issuer"];
-
-            var key = Encoding.ASCII.GetBytes(clave1);
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
-
-        }
-        private void AddSwagger(IServiceCollection services)
-        {
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API (Production)", Version = "v1" });
-
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    Description = "JWT Tocken usar Bearer {Token}",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Type = SecuritySchemeType.ApiKey
-                });
-
-            });
-        }
-        private void UseSwagger(IApplicationBuilder app)
-        {
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();            
-
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
-            // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
-        }
+        
     }
 }
